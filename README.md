@@ -19,7 +19,7 @@ Check command line argument defaults:
 python mirnapathwayfinder/__init__.py -h
 ```
 
-if the defaults are OK, you can then find target interactions for a specific node_id:
+if the defaults are OK, you can then find pathways with miRNAs for a specific node_id:
 
 ```
 python mirnapathwayfinder/__init__.py hsa-miR-370-3p
