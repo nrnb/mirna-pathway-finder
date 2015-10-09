@@ -8,6 +8,23 @@ A component for the Genboree workbench.
 ```
 git clone git@github.com:ariutta/mirna-pathway-finder.git
 cd mirna-pathway-finder
+```
+
+Set up your virtualenv:
+
+```
+mkvirtualenv mirna-pathway-finder
+```
+
+or if you've already created this virtualenv:
+
+```
+workon mirna-pathway-finder
+```
+
+Install dependencies:
+
+```
 pip install -e .
 ```
 

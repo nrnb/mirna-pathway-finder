@@ -1,0 +1,23 @@
+[{
+	"WP2211": {
+		"identifier": "WP2211",
+		"mirnas": [{
+			identifier: "hsa-miR-542-3p",
+			label: "sample label1"
+		}, {
+			identifier: "hsa-miR-370-3p",
+			label: "sample label2"
+		}]
+	}
+}, {
+	"WP2216": {
+		"identifier": "WP2216",
+		"mirnas": [{
+			identifier: "hsa-miR-542-3p",
+			label: "sample label1"
+		}, {
+			identifier: "hsa-miR-370-3p",
+			label: "sample label2"
+		}]
+	}
+}]
