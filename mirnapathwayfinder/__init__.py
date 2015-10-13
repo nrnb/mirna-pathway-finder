@@ -7,6 +7,8 @@ from mirna_pathway_finder import MirnaPathwayFinder
 
 def main():
 
+    # TODO update the input args to whatever we actually need
+
     parser = argparse.ArgumentParser(
         description='''Extract subgraph(s) from XGMML network(s).''')
     parser.add_argument('ids',
