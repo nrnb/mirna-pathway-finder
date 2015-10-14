@@ -81,9 +81,9 @@ def MirnaPathwayFinder(
         # are annotated with gene ids.
         mapping['matching_gene_hits'] = map(lambda matching_gene_hit: dict([('name', matching_gene_hit)]), set(mapping['gene_hits']).intersection(query_value_list))
         mapping['matching_gene_hit_count'] = len(mapping['matching_gene_hits'])
-        mapping['matching_mirna_hits'] = map(lambda matching_gene_hit: dict([('name', matching_gene_hit)]), set(mapping['mirna_hits']).intersection(query_value_list))
+        mapping['matching_mirna_hits'] = map(lambda matching_mrna_hit: dict([('name', matching_mrna_hit)]), set(mapping['mirna_hits']).intersection(query_value_list))
         mapping['matching_mirna_hit_count'] = len(mapping['matching_mirna_hits'])
-        mapping['matching_mirna_target_hits'] = map(lambda matching_gene_hit: dict([('name', matching_gene_hit)]), set(mapping['mirna_target_hits']).intersection(query_value_list))
+        mapping['matching_mirna_target_hits'] = map(lambda mirna_target_hit: dict([('name', mirna_target_hit)]), set(mapping['mirna_target_hits']).intersection(query_value_list))
         mapping['matching_mirna_target_hit_count'] = len(mapping['matching_mirna_target_hits'])
         return mapping
 
@@ -125,7 +125,7 @@ def MirnaPathwayFinder(
         </html>'''
 
     def sort_by_hit_counts(mappings):
-        return sorted(mappings, key=lambda mapping: (mapping['matching_mirna_hit_count'], mapping['matching_mirna_target_hit_count']))
+        return sorted(mappings, key=lambda mapping: (mapping['matching_mirna_hit_count'], mapping['matching_mirna_target_hit_count']), reverse=True)
 
     def take_top_hits(mappings):
         return mappings[0:19]

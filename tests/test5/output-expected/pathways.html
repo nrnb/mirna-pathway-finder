@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+        <html>
+            <body>
+                <table id="pathway-to-mirna">
+                    <tr>
+                        <th>Name</th>
+                        <th>Identifier</th>
+                        <th>miRNA Hit Count</th>
+                        <th>miRNA Target Hit Count</th>
+                    </tr>
+                    <tr>
+                        <td id="name"><a href="#wikipathways-widget-anchor">Alzheimers Disease</a></td>
+                        <td id="identifier"><a href="http://wikipathways.org/instance/WP2059">WP2059</a></td>
+                        <td id="matching-mirna-hits">7</td>
+                        <td id="matching-mirna-target-hits">0</td>
+                    </tr>
+                </table>
+                <a name="wikipathways-widget-anchor"></a>
+                <div id="wikipathways-widget">
+                    <iframe
+                        src="http://www.wikipathways.org/wpi/PathwayWidget.php?id=WP2059&label[]=identifiers&label[]=hsa-mir-134&label[]=hsa-mir-135a-2&label[]=hsa-mir-135a-1&label[]=hsa-mir-329-2&label[]=hsa-mir-138-1&label[]=hsa-mir-219a-2&label[]=hsa-mir-219b&colors=red"
+                        width="600px"
+                        height="300px"
+                        style="overflow:hidden;">
+                    </iframe>
+                </div>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+                <script type="text/javascript">
+                    var highlightString = 'label[]=identifiers&label[]=hsa-mir-134&label[]=hsa-mir-135a-2&label[]=hsa-mir-135a-1&label[]=hsa-mir-329-2&label[]=hsa-mir-138-1&label[]=hsa-mir-219a-2&label[]=hsa-mir-219b&colors=red';
+window.addEventListener('load', function() {
+  function updateWidget(identifier) {
+    var widget = d3.select('body').select('#wikipathways-widget').selectAll('iframe')
+      .data([3])
+      .attr('src', 'http://www.wikipathways.org/wpi/PathwayWidget.php?id=' + identifier + '&' + highlightString);
+
+    widget.enter().append('iframe')
+      .attr('src', 'http://www.wikipathways.org/wpi/PathwayWidget.php?id=' + identifier + '&' + highlightString)
+       .attr('width', '600px')
+       .attr('height', '300px')
+       .attr('style', 'overflow:hidden;');
+
+    widget.exit().remove();
+  }
+
+  d3.select('#pathway-to-mirna')
+    .selectAll('tr')
+    .select('#name')
+    .filter(function(d) {
+      return this;
+    })
+    .on('click', function(event) {
+      var identifier = d3.select(this.parentNode).select('#identifier').text();
+      console.log('identifier');
+      console.log(identifier);
+      updateWidget(identifier);
+    });
+});
+
+                </script>
+            </body>
+        </html>
