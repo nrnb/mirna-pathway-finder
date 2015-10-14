@@ -12,6 +12,8 @@ cd mirna-pathway-finder
 
 Set up your virtualenv:
 
+(how to install [virtualenv on Mac](http://exponential.io/blog/2015/02/10/install-virtualenv-and-virtualenvwrapper-on-mac-os-x/)) 
+
 ```
 mkvirtualenv mirna-pathway-finder
 ```
