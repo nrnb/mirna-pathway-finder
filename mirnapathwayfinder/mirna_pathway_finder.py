@@ -14,7 +14,7 @@ from rx import Observable, Observer
 import urllib
 
 def MirnaPathwayFinder(
-        mappings_path='./pathway-to-mirna-mappings.json',
+        mappings_path='./wp-mir-table-hs.csv',
         query_values=None,
         query_value_list_column_index=0,
         node_type='rna',
@@ -22,13 +22,11 @@ def MirnaPathwayFinder(
         cache=True,
         debug=False):
 
-    debug = True
-
     def print_debug(message):
         if debug:
             print message
 
-    pathway_to_mirna_mappings = './wp-mir-table-hs.csv'
+    pathway_to_mirna_mappings = mappings_path
     pathway_to_mirna_mappings_list = []
     if os.path.isfile(pathway_to_mirna_mappings):
         with open(pathway_to_mirna_mappings, 'rb') as csvfile:
@@ -66,18 +64,21 @@ def MirnaPathwayFinder(
 
     class MyObserver(Observer):
         def on_next(self, x):
-            print("Got: %s" % x)
+            print_debug("Got: %s" % x)
 
         def on_error(self, e):
-            print("Got error: %s" % e)
+            print_debug("Got error: %s" % e)
 
         def on_completed(self):
-            print("Sequence completed")
+            print_debug("Sequence completed")
 
     def generate_widget_uri(mapping):
         return 'http://www.wikipathways.org/wpi/PathwayWidget.php?id=' + mapping['identifier'] + '&' + highlight_string
 
-    def get_hit_counts(mapping):
+    def get_hits_and_counts(mapping):
+        # NOTE: we're not currently using the matching gene hits. They are intended to
+        # be used for specifying which node(s) to highlight, in the case that miRNAs
+        # are annotated with gene ids.
         mapping['matching_gene_hits'] = map(lambda matching_gene_hit: dict([('name', matching_gene_hit)]), set(mapping['gene_hits']).intersection(query_value_list))
         mapping['matching_gene_hit_count'] = len(mapping['matching_gene_hits'])
         mapping['matching_mirna_hits'] = map(lambda matching_gene_hit: dict([('name', matching_gene_hit)]), set(mapping['mirna_hits']).intersection(query_value_list))
@@ -105,10 +106,6 @@ def MirnaPathwayFinder(
                         <td id="identifier"><a href="{{id}}">{{identifier}}</a></td>
                         <td id="matching-mirna-hits">{{matching_mirna_hit_count}}</td>
                         <td id="matching-mirna-target-hits">{{matching_mirna_target_hit_count}}</td>
-                        <!--
-                        <td id="matching-mirna-hits">{{#matching_mirna_hits}}{{name}},{{/matching_mirna_hits}}</td>
-                        <td id="matching-mirna-target-hits">{{#matching_mirna_target_hits}}{{name}},{{/matching_mirna_target_hits}}</td>
-                        -->
                     </tr>{{/.}}
                 </table>
                 <a name="wikipathways-widget-anchor"></a>
@@ -134,17 +131,16 @@ def MirnaPathwayFinder(
         return mappings[0:19]
 
     def generate_pathways_table(mappings):
-        print mappings
         widget_uri = generate_widget_uri(mappings[0])
         initial_html_string = pystache.render(table_template, mappings)
         html_string_with_widget_url = initial_html_string.replace('widget_uri', widget_uri)
         with open('./mirnapathwayfinder/update-widget.js', 'r') as update_widget:
             update_widget_string = 'var highlightString = \'' + highlight_string + '\';\n' + update_widget.read()
         html_string_with_update_widget = html_string_with_widget_url.replace('update_widget_string', update_widget_string)
-        f = open('./demos/index.html', 'w')
+        f = open(output_dir + '/pathways.html', 'w')
         f.write(html_string_with_update_widget)
         return html_string_with_update_widget
 
     mappings_source = Observable.from_(pathway_to_mirna_mappings_list)
-    matching_mappings = mappings_source.map(get_hit_counts).filter(has_hit).to_list().map(sort_by_hit_counts).map(take_top_hits).map(generate_pathways_table)
+    matching_mappings = mappings_source.map(get_hits_and_counts).filter(has_hit).to_list().map(sort_by_hit_counts).map(take_top_hits).map(generate_pathways_table)
     matching_mappings.subscribe(MyObserver())

@@ -10,7 +10,7 @@ def main():
     # TODO update the input args to whatever we actually need
 
     parser = argparse.ArgumentParser(
-        description='''Extract subgraph(s) from XGMML network(s).''')
+        description='''Given a list of mirbase names, return an HTML page with a list of matching hits from WikiPathways.''')
     parser.add_argument('ids',
                         type=str,
                         help='identifier or file path to identifier list')
