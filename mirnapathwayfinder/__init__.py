@@ -20,10 +20,10 @@ def main():
                         help='''column number for identifiers in identifier list file
                         (default = 1)''')
     parser.add_argument('-s', '--source',
-                        default='./pathway-to-mirna-mappings.json',
+                        default='./wp-mir-table-hs.csv',
                         help='''source file path with mappings from
                         WikiPathways identifiers to contained miRNAs.
-                        (default = file named "pathway-to-mirna-mappings.json"
+                        (default = file named "wp-mir-table-hs.csv"
                             in current working directory)''')
     parser.add_argument('-t', '--type',
                         default='rna',
