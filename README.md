@@ -45,13 +45,13 @@ python mirnapathwayfinder/__init__.py hsa-miR-370-3p
 or provide a file path to a list of node_ids:
 
 ```
-python mirnapathwayfinder/__init__.py 'tests/test4/input/node-list.txt'
+python mirnapathwayfinder/__init__.py 'tests/test1/input/node-list.txt'
 ```
 
 Or you can override the defaults, e.g., override default output directory path:
 
 ```
-python mirnapathwayfinder/__init__.py 'tests/test4/input/node-list.txt' -o 'tests/test4/output-actual/'
+python mirnapathwayfinder/__init__.py 'tests/test1/input/node-list.txt' -o 'tests/test1/output-actual/'
 ```
 
 ## Todo

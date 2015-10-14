@@ -28,45 +28,6 @@ def MirnaPathwayFinder(
         if debug:
             print message
 
-    def has_file_extension(filename, expected_file_extension):
-        expected_index = len(filename) - len(expected_file_extension)
-        actual_index = filename.find(
-            expected_file_extension, expected_index, len(filename))
-        return actual_index == expected_index
-
-    def has_matching_node(current_mapping_graph, query_value):
-        verified_query_value = None
-        if current_mapping_graph.has_node(query_value):
-            verified_query_value = query_value
-        else:
-            for onenode in current_mapping_graph.nodes():
-                current_node = current_mapping_graph.node[onenode]
-                if ((('identifiers' in current_node)
-                    and (query_value in current_node['identifiers']))
-                    or (('@label' in current_node)
-                        and (query_value == current_node['@label']))
-                        or (('label' in current_node)
-                            and (query_value == current_node['label']))
-                        or (('mimat id' in current_node)
-                            and (query_value == current_node['mimat id']))
-                        or (('name' in current_node)
-                            and (query_value == current_node['name']))):
-                    if (('mimat id' in current_node)
-                            and (query_value == current_node['mimat id'])):
-                        verified_query_value = onenode
-                        break
-                    elif (('identifiers' in current_node)
-                            and (query_value in current_node['identifiers'])):
-                        verified_query_value = onenode
-                    elif not verified_query_value:
-                        verified_query_value = onenode
-        return verified_query_value
-
-    log_result = dict()
-    log_result['total_result_count'] = 0
-    log_result['skipped_count'] = 0
-    log_result['results_by_source'] = {}
-
     pathway_to_mirna_mappings = './wp-mir-table-hs.csv'
     pathway_to_mirna_mappings_list = []
     if os.path.isfile(pathway_to_mirna_mappings):
@@ -99,10 +60,9 @@ def MirnaPathwayFinder(
             query_value_list.append(query_values)
 
     # TODO handle the case where the query values are NOT display names
+    # TODO use the gene_hits, mirna hits and mirna targets hits instead of just the query values to create this string
     highlight_values = map(lambda query_value: 'label[]=' + urllib.quote(query_value), query_value_list)
     highlight_string = str.join('&', highlight_values) + '&colors=red'
-
-    log_result['query_count'] = len(query_value_list)
 
     class MyObserver(Observer):
         def on_next(self, x):
@@ -119,43 +79,36 @@ def MirnaPathwayFinder(
 
     def get_hit_counts(mapping):
         mapping['matching_gene_hits'] = map(lambda matching_gene_hit: dict([('name', matching_gene_hit)]), set(mapping['gene_hits']).intersection(query_value_list))
+        mapping['matching_gene_hit_count'] = len(mapping['matching_gene_hits'])
         mapping['matching_mirna_hits'] = map(lambda matching_gene_hit: dict([('name', matching_gene_hit)]), set(mapping['mirna_hits']).intersection(query_value_list))
+        mapping['matching_mirna_hit_count'] = len(mapping['matching_mirna_hits'])
         mapping['matching_mirna_target_hits'] = map(lambda matching_gene_hit: dict([('name', matching_gene_hit)]), set(mapping['mirna_target_hits']).intersection(query_value_list))
+        mapping['matching_mirna_target_hit_count'] = len(mapping['matching_mirna_target_hits'])
         return mapping
 
     def has_hit(mapping):
-        hit_count = len(mapping['matching_gene_hits']) + len(mapping['matching_mirna_hits']) + len(mapping['matching_mirna_target_hits'])
+        hit_count = mapping['matching_gene_hit_count'] + mapping['matching_mirna_hit_count'] + mapping['matching_mirna_target_hit_count']
         return hit_count > 0
-
-    def uri_encode_mirna_label(mirna):
-        mirna['labelUriEncoded'] = urllib.quote(mirna['label'])
-        return mirna
-
-    def uri_encode_mirna_label(mirna):
-        mirna['labelUriEncoded'] = urllib.quote(mirna['label'])
-        return mirna
-
-    def uri_encode_mirna_labels(mapping):
-        mirnas_uri_encoded = map(uri_encode_mirna_label, mapping['mirnas'])
-        mapping['mirnas_uri_encoded'] = mirnas_uri_encoded
-        return mapping
 
     table_template = '''<!DOCTYPE html>
         <html>
             <body>
-                <table>
+                <table id="pathway-to-mirna">
                     <tr>
                         <th>Name</th>
                         <th>Identifier</th>
-                        <th>Matching Genes</th>
-                        <th>Matching miRNAs</th>
-                        <th>Matching miRNA Targets</th>
+                        <th>miRNA Hit Count</th>
+                        <th>miRNA Target Hit Count</th>
                     </tr>
                     {{#.}}<tr>
-                        <td id="identifier"><a href="#wikipathways-widget-anchor">{{identifier}}</a></td>
-                        <td id="matching-gene-hits">{{#matching_gene_hits}}{{name}},{{/matching_gene_hits}}</td>
+                        <td id="name"><a href="#wikipathways-widget-anchor">{{name}}</a></td>
+                        <td id="identifier"><a href="{{id}}">{{identifier}}</a></td>
+                        <td id="matching-mirna-hits">{{matching_mirna_hit_count}}</td>
+                        <td id="matching-mirna-target-hits">{{matching_mirna_target_hit_count}}</td>
+                        <!--
                         <td id="matching-mirna-hits">{{#matching_mirna_hits}}{{name}},{{/matching_mirna_hits}}</td>
                         <td id="matching-mirna-target-hits">{{#matching_mirna_target_hits}}{{name}},{{/matching_mirna_target_hits}}</td>
+                        -->
                     </tr>{{/.}}
                 </table>
                 <a name="wikipathways-widget-anchor"></a>
@@ -168,18 +121,30 @@ def MirnaPathwayFinder(
                     </iframe>
                 </div>
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
-                <script src="../mirnapathwayfinder/update-widget.js"></script>
+                <script type="text/javascript">
+                    update_widget_string
+                </script>
             </body>
         </html>'''
 
+    def sort_by_hit_counts(mappings):
+        return sorted(mappings, key=lambda mapping: (mapping['matching_mirna_hit_count'], mapping['matching_mirna_target_hit_count']))
+
+    def take_top_hits(mappings):
+        return mappings[0:19]
+
     def generate_pathways_table(mappings):
+        print mappings
         widget_uri = generate_widget_uri(mappings[0])
-        html_string = pystache.render(table_template, mappings)
-        full_html_string = html_string.replace('widget_uri', widget_uri)
+        initial_html_string = pystache.render(table_template, mappings)
+        html_string_with_widget_url = initial_html_string.replace('widget_uri', widget_uri)
+        with open('./mirnapathwayfinder/update-widget.js', 'r') as update_widget:
+            update_widget_string = 'var highlightString = \'' + highlight_string + '\';\n' + update_widget.read()
+        html_string_with_update_widget = html_string_with_widget_url.replace('update_widget_string', update_widget_string)
         f = open('./demos/index.html', 'w')
-        f.write(full_html_string)
-        return full_html_string
+        f.write(html_string_with_update_widget)
+        return html_string_with_update_widget
 
     mappings_source = Observable.from_(pathway_to_mirna_mappings_list)
-    matching_mappings = mappings_source.map(get_hit_counts).filter(has_hit).to_list().map(generate_pathways_table)
+    matching_mappings = mappings_source.map(get_hit_counts).filter(has_hit).to_list().map(sort_by_hit_counts).map(take_top_hits).map(generate_pathways_table)
     matching_mappings.subscribe(MyObserver())
