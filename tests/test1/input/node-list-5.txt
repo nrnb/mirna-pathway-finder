@@ -1,0 +1,8 @@
+identifiers
+hsa-mir-134
+hsa-mir-135a-2
+hsa-mir-135a-1
+hsa-mir-329-2
+hsa-mir-138-1
+hsa-mir-219a-2
+hsa-mir-219b

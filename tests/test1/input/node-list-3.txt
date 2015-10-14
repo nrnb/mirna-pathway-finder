@@ -1,0 +1,15 @@
+identifiers
+hsa-miR-193a-5p
+hsa-miR-378c
+hsa-miR-660-5p
+hsa-miR-378e
+hsa-miR-193b-5p
+hsa-miR-150-5p
+hsa-miR-629-5p
+hsa-miR-21-5p
+hsa-miR-29a-3p
+hsa-miR-223-3p
+hsa-miR-381-3p
+hsa-miR-30a-5p
+hsa-miR-30d-5p
+hsa-miR-29c-3p

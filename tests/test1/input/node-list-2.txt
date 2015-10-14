@@ -1,0 +1,6 @@
+identifier
+hsa-miR-18a-3p
+hsa-miR-18a-5p
+hsa-miR-193a-3p
+hsa-miR-193a-5p
+hsa-miR-214-3p
