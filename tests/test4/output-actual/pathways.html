@@ -1,112 +1,155 @@
 <!DOCTYPE html>
         <html>
+	    <style>
+		body {
+		    font: 11px tahoma,arial,helvetica,sans-serif;
+		}
+		#pathway-to-mirna {
+			font-family: "tahoma,arial,helvetica,sans-serif"
+			font-size: 11px;
+			background: none repeat scroll 0% 0% #FFF;
+			width: 600px;
+			border-collapse: collapse;
+			text-align: left;
+			margin: 20px;
+		}
+		#pathway-to-mirna th {
+			border-bottom: 1px solid #AAA;
+			padding: 0px 0px 3px;
+		}
+		#pathway-to-mirna tr:hover {
+                        background-color:#DDD;
+                }
+		a:link {
+		    text-decoration: none;
+		}
+
+		a:visited {
+		    text-decoration: none;
+		}
+
+		a:hover {
+		    text-decoration: underline;
+		}
+
+		a:active {
+		    text-decoration: underline;
+		}
+		p {
+			max-width:600px;
+		}
+	    </style>
             <body>
+		<h2>miRNA Pathway Finder</h2>
+		<p>The table lists pathways containing your miRNAs of interest and/or protein targets of your miRNAs. The first column lists a clickable pathway title that updates the Interactive Pathway Viewer below. The second column lists pathway identifers that link to WikiPathways.org. The list is sorted by "miRNAs" (primary) and by "miRNA Targets" (secondary) found on each pathway. The top 20 results are lists.</p>
+		<h3>Table of Pathway Results</h3>
                 <table id="pathway-to-mirna">
                     <tr>
-                        <th>Name</th>
-                        <th>Identifier</th>
-                        <th>miRNA Hit Count</th>
-                        <th>miRNA Target Hit Count</th>
+                        <th>Pathway Title <i>(click to view pathway)</i></th>
+                        <th>Linkout</th>
+                        <th>miRNAs</th>
+                        <th>miRNA Targets</th>
                     </tr>
                     <tr>
-                        <td id="name"><a href="#wikipathways-widget-anchor">Alzheimers Disease</a></td>
-                        <td id="identifier"><a href="http://wikipathways.org/instance/WP2059">WP2059</a></td>
-                        <td id="matching-mirna-hits">7</td>
-                        <td id="matching-mirna-target-hits">6</td>
+                        <td id="name" title="view pathway"><a href="#wikipathways-widget-anchor">Alzheimers Disease</a></td>
+                        <td id="identifier" title="view pathway at WikiPathways.org"><a href="http://wikipathways.org/instance/WP2059" target="_blank">WP2059</a></td>
+                        <td align="center" id="matching-mirna-hits" title="[{'name': 'hsa-mir-135a-2'}, {'name': 'hsa-mir-135a-1'}, {'name': 'hsa-mir-134'}, {'name': 'hsa-mir-219b'}, {'name': 'hsa-mir-219a-2'}, {'name': 'hsa-mir-329-2'}, {'name': 'hsa-mir-138-1'}]">7</td>
+                        <td align="center" id="matching-mirna-target-hits" title="[{'name': 'hsa-miR-1'}, {'name': 'hsa-miR-598-3p'}, {'name': 'hsa-miR-26b-5p'}, {'name': 'hsa-miR-15a-5p'}, {'name': 'hsa-miR-34a-5p'}, {'name': 'hsa-miR-146a-5p'}]">6</td>
                     </tr><tr>
-                        <td id="name"><a href="#wikipathways-widget-anchor">EV release from cardiac cells and their functional effects</a></td>
-                        <td id="identifier"><a href="http://wikipathways.org/instance/WP3297">WP3297</a></td>
-                        <td id="matching-mirna-hits">3</td>
-                        <td id="matching-mirna-target-hits">6</td>
+                        <td id="name" title="view pathway"><a href="#wikipathways-widget-anchor">EV release from cardiac cells and their functional effects</a></td>
+                        <td id="identifier" title="view pathway at WikiPathways.org"><a href="http://wikipathways.org/instance/WP3297" target="_blank">WP3297</a></td>
+                        <td align="center" id="matching-mirna-hits" title="[{'name': 'hsa-mir-145'}, {'name': 'hsa-mir-143'}, {'name': 'hsa-mir-126'}]">3</td>
+                        <td align="center" id="matching-mirna-target-hits" title="[{'name': 'hsa-miR-15a-5p'}, {'name': 'hsa-miR-34a-5p'}, {'name': 'hsa-miR-19a-3p'}, {'name': 'hsa-miR-372-3p'}, {'name': 'hsa-miR-302d-3p'}, {'name': 'hsa-miR-146a-5p'}]">6</td>
                     </tr><tr>
-                        <td id="name"><a href="#wikipathways-widget-anchor">Heart Development</a></td>
-                        <td id="identifier"><a href="http://wikipathways.org/instance/WP1591">WP1591</a></td>
-                        <td id="matching-mirna-hits">2</td>
-                        <td id="matching-mirna-target-hits">8</td>
+                        <td id="name" title="view pathway"><a href="#wikipathways-widget-anchor">Heart Development</a></td>
+                        <td id="identifier" title="view pathway at WikiPathways.org"><a href="http://wikipathways.org/instance/WP1591" target="_blank">WP1591</a></td>
+                        <td align="center" id="matching-mirna-hits" title="[{'name': 'hsa-mir-145'}, {'name': 'hsa-mir-143'}]">2</td>
+                        <td align="center" id="matching-mirna-target-hits" title="[{'name': 'hsa-miR-1'}, {'name': 'hsa-miR-26b-5p'}, {'name': 'hsa-miR-15a-5p'}, {'name': 'hsa-miR-302d-3p'}, {'name': 'hsa-miR-19a-3p'}, {'name': 'hsa-miR-372-3p'}, {'name': 'hsa-miR-34a-5p'}, {'name': 'hsa-miR-146a-5p'}]">8</td>
                     </tr><tr>
-                        <td id="name"><a href="#wikipathways-widget-anchor">miRNAs involved in DNA damage response</a></td>
-                        <td id="identifier"><a href="http://wikipathways.org/instance/WP1545">WP1545</a></td>
-                        <td id="matching-mirna-hits">2</td>
-                        <td id="matching-mirna-target-hits">7</td>
+                        <td id="name" title="view pathway"><a href="#wikipathways-widget-anchor">miRNAs involved in DNA damage response</a></td>
+                        <td id="identifier" title="view pathway at WikiPathways.org"><a href="http://wikipathways.org/instance/WP1545" target="_blank">WP1545</a></td>
+                        <td align="center" id="matching-mirna-hits" title="[{'name': 'hsa-mir-145'}, {'name': 'hsa-mir-143'}]">2</td>
+                        <td align="center" id="matching-mirna-target-hits" title="[{'name': 'hsa-miR-1'}, {'name': 'hsa-miR-26b-5p'}, {'name': 'hsa-miR-15a-5p'}, {'name': 'hsa-miR-34a-5p'}, {'name': 'hsa-miR-19a-3p'}, {'name': 'hsa-miR-372-3p'}, {'name': 'hsa-miR-146a-5p'}]">7</td>
                     </tr><tr>
-                        <td id="name"><a href="#wikipathways-widget-anchor">SRF and miRs in Smooth Muscle Differentiation and Proliferation</a></td>
-                        <td id="identifier"><a href="http://wikipathways.org/instance/WP1991">WP1991</a></td>
-                        <td id="matching-mirna-hits">2</td>
-                        <td id="matching-mirna-target-hits">4</td>
+                        <td id="name" title="view pathway"><a href="#wikipathways-widget-anchor">SRF and miRs in Smooth Muscle Differentiation and Proliferation</a></td>
+                        <td id="identifier" title="view pathway at WikiPathways.org"><a href="http://wikipathways.org/instance/WP1991" target="_blank">WP1991</a></td>
+                        <td align="center" id="matching-mirna-hits" title="[{'name': 'hsa-mir-145'}, {'name': 'hsa-mir-143'}]">2</td>
+                        <td align="center" id="matching-mirna-target-hits" title="[{'name': 'hsa-miR-1'}, {'name': 'hsa-miR-26b-5p'}, {'name': 'hsa-miR-15a-5p'}, {'name': 'hsa-miR-302d-3p'}]">4</td>
                     </tr><tr>
-                        <td id="name"><a href="#wikipathways-widget-anchor">miRNA Regulation of DNA Damage Response</a></td>
-                        <td id="identifier"><a href="http://wikipathways.org/instance/WP1530">WP1530</a></td>
-                        <td id="matching-mirna-hits">1</td>
-                        <td id="matching-mirna-target-hits">8</td>
+                        <td id="name" title="view pathway"><a href="#wikipathways-widget-anchor">miRNA Regulation of DNA Damage Response</a></td>
+                        <td id="identifier" title="view pathway at WikiPathways.org"><a href="http://wikipathways.org/instance/WP1530" target="_blank">WP1530</a></td>
+                        <td align="center" id="matching-mirna-hits" title="[{'name': 'hsa-mir-145'}]">1</td>
+                        <td align="center" id="matching-mirna-target-hits" title="[{'name': 'hsa-miR-1'}, {'name': 'hsa-miR-26b-5p'}, {'name': 'hsa-miR-15a-5p'}, {'name': 'hsa-miR-302d-3p'}, {'name': 'hsa-miR-19a-3p'}, {'name': 'hsa-miR-372-3p'}, {'name': 'hsa-miR-34a-5p'}, {'name': 'hsa-miR-146a-5p'}]">8</td>
                     </tr><tr>
-                        <td id="name"><a href="#wikipathways-widget-anchor">DNA Damage Response</a></td>
-                        <td id="identifier"><a href="http://wikipathways.org/instance/WP707">WP707</a></td>
-                        <td id="matching-mirna-hits">0</td>
-                        <td id="matching-mirna-target-hits">8</td>
+                        <td id="name" title="view pathway"><a href="#wikipathways-widget-anchor">DNA Damage Response</a></td>
+                        <td id="identifier" title="view pathway at WikiPathways.org"><a href="http://wikipathways.org/instance/WP707" target="_blank">WP707</a></td>
+                        <td align="center" id="matching-mirna-hits" title="[]">0</td>
+                        <td align="center" id="matching-mirna-target-hits" title="[{'name': 'hsa-miR-1'}, {'name': 'hsa-miR-26b-5p'}, {'name': 'hsa-miR-15a-5p'}, {'name': 'hsa-miR-302d-3p'}, {'name': 'hsa-miR-19a-3p'}, {'name': 'hsa-miR-372-3p'}, {'name': 'hsa-miR-34a-5p'}, {'name': 'hsa-miR-146a-5p'}]">8</td>
                     </tr><tr>
-                        <td id="name"><a href="#wikipathways-widget-anchor">G1 to S cell cycle control</a></td>
-                        <td id="identifier"><a href="http://wikipathways.org/instance/WP45">WP45</a></td>
-                        <td id="matching-mirna-hits">0</td>
-                        <td id="matching-mirna-target-hits">8</td>
+                        <td id="name" title="view pathway"><a href="#wikipathways-widget-anchor">G1 to S cell cycle control</a></td>
+                        <td id="identifier" title="view pathway at WikiPathways.org"><a href="http://wikipathways.org/instance/WP45" target="_blank">WP45</a></td>
+                        <td align="center" id="matching-mirna-hits" title="[]">0</td>
+                        <td align="center" id="matching-mirna-target-hits" title="[{'name': 'hsa-miR-1'}, {'name': 'hsa-miR-26b-5p'}, {'name': 'hsa-miR-15a-5p'}, {'name': 'hsa-miR-302d-3p'}, {'name': 'hsa-miR-19a-3p'}, {'name': 'hsa-miR-372-3p'}, {'name': 'hsa-miR-34a-5p'}, {'name': 'hsa-miR-146a-5p'}]">8</td>
                     </tr><tr>
-                        <td id="name"><a href="#wikipathways-widget-anchor">Apoptosis-related network due to altered Notch3 in ovarian cancer</a></td>
-                        <td id="identifier"><a href="http://wikipathways.org/instance/WP2864">WP2864</a></td>
-                        <td id="matching-mirna-hits">0</td>
-                        <td id="matching-mirna-target-hits">8</td>
+                        <td id="name" title="view pathway"><a href="#wikipathways-widget-anchor">Apoptosis-related network due to altered Notch3 in ovarian cancer</a></td>
+                        <td id="identifier" title="view pathway at WikiPathways.org"><a href="http://wikipathways.org/instance/WP2864" target="_blank">WP2864</a></td>
+                        <td align="center" id="matching-mirna-hits" title="[]">0</td>
+                        <td align="center" id="matching-mirna-target-hits" title="[{'name': 'hsa-miR-1'}, {'name': 'hsa-miR-26b-5p'}, {'name': 'hsa-miR-15a-5p'}, {'name': 'hsa-miR-302d-3p'}, {'name': 'hsa-miR-19a-3p'}, {'name': 'hsa-miR-372-3p'}, {'name': 'hsa-miR-34a-5p'}, {'name': 'hsa-miR-146a-5p'}]">8</td>
                     </tr><tr>
-                        <td id="name"><a href="#wikipathways-widget-anchor">Integrated Breast Cancer Pathway</a></td>
-                        <td id="identifier"><a href="http://wikipathways.org/instance/WP1984">WP1984</a></td>
-                        <td id="matching-mirna-hits">0</td>
-                        <td id="matching-mirna-target-hits">8</td>
+                        <td id="name" title="view pathway"><a href="#wikipathways-widget-anchor">Integrated Breast Cancer Pathway</a></td>
+                        <td id="identifier" title="view pathway at WikiPathways.org"><a href="http://wikipathways.org/instance/WP1984" target="_blank">WP1984</a></td>
+                        <td align="center" id="matching-mirna-hits" title="[]">0</td>
+                        <td align="center" id="matching-mirna-target-hits" title="[{'name': 'hsa-miR-1'}, {'name': 'hsa-miR-26b-5p'}, {'name': 'hsa-miR-15a-5p'}, {'name': 'hsa-miR-302d-3p'}, {'name': 'hsa-miR-19a-3p'}, {'name': 'hsa-miR-372-3p'}, {'name': 'hsa-miR-34a-5p'}, {'name': 'hsa-miR-146a-5p'}]">8</td>
                     </tr><tr>
-                        <td id="name"><a href="#wikipathways-widget-anchor">Endochondral Ossification</a></td>
-                        <td id="identifier"><a href="http://wikipathways.org/instance/WP474">WP474</a></td>
-                        <td id="matching-mirna-hits">0</td>
-                        <td id="matching-mirna-target-hits">8</td>
+                        <td id="name" title="view pathway"><a href="#wikipathways-widget-anchor">Endochondral Ossification</a></td>
+                        <td id="identifier" title="view pathway at WikiPathways.org"><a href="http://wikipathways.org/instance/WP474" target="_blank">WP474</a></td>
+                        <td align="center" id="matching-mirna-hits" title="[]">0</td>
+                        <td align="center" id="matching-mirna-target-hits" title="[{'name': 'hsa-miR-1'}, {'name': 'hsa-miR-598-3p'}, {'name': 'hsa-miR-26b-5p'}, {'name': 'hsa-miR-15a-5p'}, {'name': 'hsa-miR-302d-3p'}, {'name': 'hsa-miR-372-3p'}, {'name': 'hsa-miR-34a-5p'}, {'name': 'hsa-miR-146a-5p'}]">8</td>
                     </tr><tr>
-                        <td id="name"><a href="#wikipathways-widget-anchor">Cell Cycle</a></td>
-                        <td id="identifier"><a href="http://wikipathways.org/instance/WP179">WP179</a></td>
-                        <td id="matching-mirna-hits">0</td>
-                        <td id="matching-mirna-target-hits">8</td>
+                        <td id="name" title="view pathway"><a href="#wikipathways-widget-anchor">Cell Cycle</a></td>
+                        <td id="identifier" title="view pathway at WikiPathways.org"><a href="http://wikipathways.org/instance/WP179" target="_blank">WP179</a></td>
+                        <td align="center" id="matching-mirna-hits" title="[]">0</td>
+                        <td align="center" id="matching-mirna-target-hits" title="[{'name': 'hsa-miR-1'}, {'name': 'hsa-miR-26b-5p'}, {'name': 'hsa-miR-15a-5p'}, {'name': 'hsa-miR-302d-3p'}, {'name': 'hsa-miR-19a-3p'}, {'name': 'hsa-miR-372-3p'}, {'name': 'hsa-miR-34a-5p'}, {'name': 'hsa-miR-146a-5p'}]">8</td>
                     </tr><tr>
-                        <td id="name"><a href="#wikipathways-widget-anchor">Signaling Pathways in Glioblastoma</a></td>
-                        <td id="identifier"><a href="http://wikipathways.org/instance/WP2261">WP2261</a></td>
-                        <td id="matching-mirna-hits">0</td>
-                        <td id="matching-mirna-target-hits">8</td>
+                        <td id="name" title="view pathway"><a href="#wikipathways-widget-anchor">Signaling Pathways in Glioblastoma</a></td>
+                        <td id="identifier" title="view pathway at WikiPathways.org"><a href="http://wikipathways.org/instance/WP2261" target="_blank">WP2261</a></td>
+                        <td align="center" id="matching-mirna-hits" title="[]">0</td>
+                        <td align="center" id="matching-mirna-target-hits" title="[{'name': 'hsa-miR-1'}, {'name': 'hsa-miR-26b-5p'}, {'name': 'hsa-miR-15a-5p'}, {'name': 'hsa-miR-302d-3p'}, {'name': 'hsa-miR-19a-3p'}, {'name': 'hsa-miR-372-3p'}, {'name': 'hsa-miR-34a-5p'}, {'name': 'hsa-miR-146a-5p'}]">8</td>
                     </tr><tr>
-                        <td id="name"><a href="#wikipathways-widget-anchor">Aryl Hydrocarbon Receptor</a></td>
-                        <td id="identifier"><a href="http://wikipathways.org/instance/WP2586">WP2586</a></td>
-                        <td id="matching-mirna-hits">0</td>
-                        <td id="matching-mirna-target-hits">8</td>
+                        <td id="name" title="view pathway"><a href="#wikipathways-widget-anchor">Aryl Hydrocarbon Receptor</a></td>
+                        <td id="identifier" title="view pathway at WikiPathways.org"><a href="http://wikipathways.org/instance/WP2586" target="_blank">WP2586</a></td>
+                        <td align="center" id="matching-mirna-hits" title="[]">0</td>
+                        <td align="center" id="matching-mirna-target-hits" title="[{'name': 'hsa-miR-1'}, {'name': 'hsa-miR-26b-5p'}, {'name': 'hsa-miR-15a-5p'}, {'name': 'hsa-miR-302d-3p'}, {'name': 'hsa-miR-19a-3p'}, {'name': 'hsa-miR-372-3p'}, {'name': 'hsa-miR-34a-5p'}, {'name': 'hsa-miR-146a-5p'}]">8</td>
                     </tr><tr>
-                        <td id="name"><a href="#wikipathways-widget-anchor">Corticotropin-releasing hormone</a></td>
-                        <td id="identifier"><a href="http://wikipathways.org/instance/WP2355">WP2355</a></td>
-                        <td id="matching-mirna-hits">0</td>
-                        <td id="matching-mirna-target-hits">8</td>
+                        <td id="name" title="view pathway"><a href="#wikipathways-widget-anchor">Corticotropin-releasing hormone</a></td>
+                        <td id="identifier" title="view pathway at WikiPathways.org"><a href="http://wikipathways.org/instance/WP2355" target="_blank">WP2355</a></td>
+                        <td align="center" id="matching-mirna-hits" title="[]">0</td>
+                        <td align="center" id="matching-mirna-target-hits" title="[{'name': 'hsa-miR-1'}, {'name': 'hsa-miR-26b-5p'}, {'name': 'hsa-miR-15a-5p'}, {'name': 'hsa-miR-302d-3p'}, {'name': 'hsa-miR-19a-3p'}, {'name': 'hsa-miR-372-3p'}, {'name': 'hsa-miR-34a-5p'}, {'name': 'hsa-miR-146a-5p'}]">8</td>
                     </tr><tr>
-                        <td id="name"><a href="#wikipathways-widget-anchor">TGF beta Signaling Pathway</a></td>
-                        <td id="identifier"><a href="http://wikipathways.org/instance/WP366">WP366</a></td>
-                        <td id="matching-mirna-hits">0</td>
-                        <td id="matching-mirna-target-hits">8</td>
+                        <td id="name" title="view pathway"><a href="#wikipathways-widget-anchor">TGF beta Signaling Pathway</a></td>
+                        <td id="identifier" title="view pathway at WikiPathways.org"><a href="http://wikipathways.org/instance/WP366" target="_blank">WP366</a></td>
+                        <td align="center" id="matching-mirna-hits" title="[]">0</td>
+                        <td align="center" id="matching-mirna-target-hits" title="[{'name': 'hsa-miR-1'}, {'name': 'hsa-miR-26b-5p'}, {'name': 'hsa-miR-15a-5p'}, {'name': 'hsa-miR-302d-3p'}, {'name': 'hsa-miR-19a-3p'}, {'name': 'hsa-miR-372-3p'}, {'name': 'hsa-miR-34a-5p'}, {'name': 'hsa-miR-146a-5p'}]">8</td>
                     </tr><tr>
-                        <td id="name"><a href="#wikipathways-widget-anchor">T-Cell Receptor and Co-stimulatory Signaling</a></td>
-                        <td id="identifier"><a href="http://wikipathways.org/instance/WP2583">WP2583</a></td>
-                        <td id="matching-mirna-hits">0</td>
-                        <td id="matching-mirna-target-hits">8</td>
+                        <td id="name" title="view pathway"><a href="#wikipathways-widget-anchor">T-Cell Receptor and Co-stimulatory Signaling</a></td>
+                        <td id="identifier" title="view pathway at WikiPathways.org"><a href="http://wikipathways.org/instance/WP2583" target="_blank">WP2583</a></td>
+                        <td align="center" id="matching-mirna-hits" title="[]">0</td>
+                        <td align="center" id="matching-mirna-target-hits" title="[{'name': 'hsa-miR-1'}, {'name': 'hsa-miR-598-3p'}, {'name': 'hsa-miR-26b-5p'}, {'name': 'hsa-miR-15a-5p'}, {'name': 'hsa-miR-302d-3p'}, {'name': 'hsa-miR-19a-3p'}, {'name': 'hsa-miR-34a-5p'}, {'name': 'hsa-miR-146a-5p'}]">8</td>
                     </tr><tr>
-                        <td id="name"><a href="#wikipathways-widget-anchor">Androgen receptor signaling pathway</a></td>
-                        <td id="identifier"><a href="http://wikipathways.org/instance/WP138">WP138</a></td>
-                        <td id="matching-mirna-hits">0</td>
-                        <td id="matching-mirna-target-hits">8</td>
+                        <td id="name" title="view pathway"><a href="#wikipathways-widget-anchor">Androgen receptor signaling pathway</a></td>
+                        <td id="identifier" title="view pathway at WikiPathways.org"><a href="http://wikipathways.org/instance/WP138" target="_blank">WP138</a></td>
+                        <td align="center" id="matching-mirna-hits" title="[]">0</td>
+                        <td align="center" id="matching-mirna-target-hits" title="[{'name': 'hsa-miR-1'}, {'name': 'hsa-miR-26b-5p'}, {'name': 'hsa-miR-15a-5p'}, {'name': 'hsa-miR-302d-3p'}, {'name': 'hsa-miR-19a-3p'}, {'name': 'hsa-miR-372-3p'}, {'name': 'hsa-miR-34a-5p'}, {'name': 'hsa-miR-146a-5p'}]">8</td>
                     </tr><tr>
-                        <td id="name"><a href="#wikipathways-widget-anchor">Spinal Cord Injury</a></td>
-                        <td id="identifier"><a href="http://wikipathways.org/instance/WP2431">WP2431</a></td>
-                        <td id="matching-mirna-hits">0</td>
-                        <td id="matching-mirna-target-hits">8</td>
+                        <td id="name" title="view pathway"><a href="#wikipathways-widget-anchor">Spinal Cord Injury</a></td>
+                        <td id="identifier" title="view pathway at WikiPathways.org"><a href="http://wikipathways.org/instance/WP2431" target="_blank">WP2431</a></td>
+                        <td align="center" id="matching-mirna-hits" title="[]">0</td>
+                        <td align="center" id="matching-mirna-target-hits" title="[{'name': 'hsa-miR-1'}, {'name': 'hsa-miR-26b-5p'}, {'name': 'hsa-miR-15a-5p'}, {'name': 'hsa-miR-302d-3p'}, {'name': 'hsa-miR-19a-3p'}, {'name': 'hsa-miR-372-3p'}, {'name': 'hsa-miR-34a-5p'}, {'name': 'hsa-miR-146a-5p'}]">8</td>
                     </tr>
                 </table>
                 <a name="wikipathways-widget-anchor"></a>
                 <div id="wikipathways-widget">
+		  <h3>Interactive Pathway Viewer</h3>
                     <iframe
                         src="http://www.wikipathways.org/wpi/PathwayWidget.php?id=WP2059&label[]=identifiers&label[]=hsa-mir-134&label[]=hsa-mir-135a-2&label[]=hsa-mir-135a-1&label[]=hsa-mir-329-2&label[]=hsa-mir-138-1&label[]=hsa-mir-219a-2&label[]=hsa-mir-219b&label[]=hsa-miR-1&label[]=hsa-miR-598-3p&label[]=hsa-miR-26b-5p&label[]=hsa-mir-145&label[]=hsa-mir-143&label[]=hsa-mir-126&label[]=hsa-miR-372-3p&label[]=hsa-miR-19a-3p&label[]=hsa-miR-302d-3p&label[]=hsa-miR-146a-5p&label[]=hsa-miR-15a-5p&label[]=hsa-miR-34a-5p&colors=red"
                         width="600px"
