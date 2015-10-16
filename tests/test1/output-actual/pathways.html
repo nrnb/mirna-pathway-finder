@@ -1,112 +1,174 @@
 <!DOCTYPE html>
         <html>
+            <style>
+                body {
+                    font: 11px tahoma,arial,helvetica,sans-serif;
+                }
+                #pathway-to-mirna {
+                        font-family: "tahoma,arial,helvetica,sans-serif"
+                        font-size: 11px;
+                        background: none repeat scroll 0% 0% #FFF;
+                        width: 600px;
+                        border-collapse: collapse;
+                        text-align: left;
+                        margin: 20px;
+                }
+                #pathway-to-mirna th {
+                        border-bottom: 1px solid #AAA;
+                        padding: 0px 0px 3px;
+                }
+                #pathway-to-mirna tr:hover {
+                        background-color:#DDD;
+                }
+                a:link {
+                    text-decoration: none;
+                }
+
+                a:visited {
+                    text-decoration: none;
+                }
+
+                a:hover {
+                    text-decoration: underline;
+                }
+
+                a:active {
+                    text-decoration: underline;
+                }
+                p {
+                        max-width:600px;
+                }
+            </style>
             <body>
+                <h2>Pathway Finder</h2>
+                <p>The table lists pathways containing your miRNAs of interest and/or protein targets of your miRNAs. The first column lists a clickable pathway title that updates the Interactive Pathway Viewer below. The second column lists pathway identifers that link to WikiPathways.org. The list is sorted by "miRNAs" (primary) and by "miRNA Targets" (secondary) found on each pathway. The top 20 results are listed.</p>
+                <h3>Table of Pathway Results</h3>
                 <table id="pathway-to-mirna">
                     <tr>
-                        <th>Name</th>
-                        <th>Identifier</th>
-                        <th>miRNA Hit Count</th>
-                        <th>miRNA Target Hit Count</th>
+                        <th>Pathway Title <i>(click to view pathway)</i></th>
+                        <th>Linkout</th>
+                        <th>miRNAs</th>
+                        <th>miRNA Targets</th>
                     </tr>
                     <tr>
-                        <td id="name"><a href="#wikipathways-widget-anchor">Interleukin-11 Signaling Pathway</a></td>
-                        <td id="identifier"><a href="http://wikipathways.org/instance/WP2332">WP2332</a></td>
-                        <td id="matching-mirna-hits">0</td>
-                        <td id="matching-mirna-target-hits">1</td>
+                        <td id="name" title="view pathway"><a href="#wikipathways-widget-anchor">Interleukin-11 Signaling Pathway</a></td>
+                        <td id="identifier" title="view pathway at WikiPathways.org"><a href="http://wikipathways.org/instance/WP2332" target="_blank">WP2332</a></td>
+                        <td align="center" id="matching-mirna-hits" title="">0</td>
+                        <td align="center" id="matching-mirna-target-hits" title=" hsa-miR-542-3p
+">1</td>
                     </tr><tr>
-                        <td id="name"><a href="#wikipathways-widget-anchor">Apoptosis-related network due to altered Notch3 in ovarian cancer</a></td>
-                        <td id="identifier"><a href="http://wikipathways.org/instance/WP2864">WP2864</a></td>
-                        <td id="matching-mirna-hits">0</td>
-                        <td id="matching-mirna-target-hits">1</td>
+                        <td id="name" title="view pathway"><a href="#wikipathways-widget-anchor">Apoptosis-related network due to altered Notch3 in ovarian cancer</a></td>
+                        <td id="identifier" title="view pathway at WikiPathways.org"><a href="http://wikipathways.org/instance/WP2864" target="_blank">WP2864</a></td>
+                        <td align="center" id="matching-mirna-hits" title="">0</td>
+                        <td align="center" id="matching-mirna-target-hits" title=" hsa-miR-542-3p
+">1</td>
                     </tr><tr>
-                        <td id="name"><a href="#wikipathways-widget-anchor">Regulation of toll-like receptor signaling pathway</a></td>
-                        <td id="identifier"><a href="http://wikipathways.org/instance/WP1449">WP1449</a></td>
-                        <td id="matching-mirna-hits">0</td>
-                        <td id="matching-mirna-target-hits">1</td>
+                        <td id="name" title="view pathway"><a href="#wikipathways-widget-anchor">Regulation of toll-like receptor signaling pathway</a></td>
+                        <td id="identifier" title="view pathway at WikiPathways.org"><a href="http://wikipathways.org/instance/WP1449" target="_blank">WP1449</a></td>
+                        <td align="center" id="matching-mirna-hits" title="">0</td>
+                        <td align="center" id="matching-mirna-target-hits" title=" hsa-miR-370-3p
+">1</td>
                     </tr><tr>
-                        <td id="name"><a href="#wikipathways-widget-anchor">Mitochondrial LC-Fatty Acid Beta-Oxidation</a></td>
-                        <td id="identifier"><a href="http://wikipathways.org/instance/WP368">WP368</a></td>
-                        <td id="matching-mirna-hits">0</td>
-                        <td id="matching-mirna-target-hits">1</td>
+                        <td id="name" title="view pathway"><a href="#wikipathways-widget-anchor">Mitochondrial LC-Fatty Acid Beta-Oxidation</a></td>
+                        <td id="identifier" title="view pathway at WikiPathways.org"><a href="http://wikipathways.org/instance/WP368" target="_blank">WP368</a></td>
+                        <td align="center" id="matching-mirna-hits" title="">0</td>
+                        <td align="center" id="matching-mirna-target-hits" title=" hsa-miR-370-3p
+">1</td>
                     </tr><tr>
-                        <td id="name"><a href="#wikipathways-widget-anchor">PPAR Alpha Pathway</a></td>
-                        <td id="identifier"><a href="http://wikipathways.org/instance/WP2878">WP2878</a></td>
-                        <td id="matching-mirna-hits">0</td>
-                        <td id="matching-mirna-target-hits">1</td>
+                        <td id="name" title="view pathway"><a href="#wikipathways-widget-anchor">PPAR Alpha Pathway</a></td>
+                        <td id="identifier" title="view pathway at WikiPathways.org"><a href="http://wikipathways.org/instance/WP2878" target="_blank">WP2878</a></td>
+                        <td align="center" id="matching-mirna-hits" title="">0</td>
+                        <td align="center" id="matching-mirna-target-hits" title=" hsa-miR-370-3p
+">1</td>
                     </tr><tr>
-                        <td id="name"><a href="#wikipathways-widget-anchor">Integrated Breast Cancer Pathway</a></td>
-                        <td id="identifier"><a href="http://wikipathways.org/instance/WP1984">WP1984</a></td>
-                        <td id="matching-mirna-hits">0</td>
-                        <td id="matching-mirna-target-hits">1</td>
+                        <td id="name" title="view pathway"><a href="#wikipathways-widget-anchor">Integrated Breast Cancer Pathway</a></td>
+                        <td id="identifier" title="view pathway at WikiPathways.org"><a href="http://wikipathways.org/instance/WP1984" target="_blank">WP1984</a></td>
+                        <td align="center" id="matching-mirna-hits" title="">0</td>
+                        <td align="center" id="matching-mirna-target-hits" title=" hsa-miR-370-3p
+">1</td>
                     </tr><tr>
-                        <td id="name"><a href="#wikipathways-widget-anchor">Insulin Signaling</a></td>
-                        <td id="identifier"><a href="http://wikipathways.org/instance/WP481">WP481</a></td>
-                        <td id="matching-mirna-hits">0</td>
-                        <td id="matching-mirna-target-hits">1</td>
+                        <td id="name" title="view pathway"><a href="#wikipathways-widget-anchor">Insulin Signaling</a></td>
+                        <td id="identifier" title="view pathway at WikiPathways.org"><a href="http://wikipathways.org/instance/WP481" target="_blank">WP481</a></td>
+                        <td align="center" id="matching-mirna-hits" title="">0</td>
+                        <td align="center" id="matching-mirna-target-hits" title=" hsa-miR-370-3p
+">1</td>
                     </tr><tr>
-                        <td id="name"><a href="#wikipathways-widget-anchor">TNF alpha Signaling Pathway</a></td>
-                        <td id="identifier"><a href="http://wikipathways.org/instance/WP231">WP231</a></td>
-                        <td id="matching-mirna-hits">0</td>
-                        <td id="matching-mirna-target-hits">1</td>
+                        <td id="name" title="view pathway"><a href="#wikipathways-widget-anchor">TNF alpha Signaling Pathway</a></td>
+                        <td id="identifier" title="view pathway at WikiPathways.org"><a href="http://wikipathways.org/instance/WP231" target="_blank">WP231</a></td>
+                        <td align="center" id="matching-mirna-hits" title="">0</td>
+                        <td align="center" id="matching-mirna-target-hits" title=" hsa-miR-370-3p
+">1</td>
                     </tr><tr>
-                        <td id="name"><a href="#wikipathways-widget-anchor">Signaling Pathways in Glioblastoma</a></td>
-                        <td id="identifier"><a href="http://wikipathways.org/instance/WP2261">WP2261</a></td>
-                        <td id="matching-mirna-hits">0</td>
-                        <td id="matching-mirna-target-hits">1</td>
+                        <td id="name" title="view pathway"><a href="#wikipathways-widget-anchor">Signaling Pathways in Glioblastoma</a></td>
+                        <td id="identifier" title="view pathway at WikiPathways.org"><a href="http://wikipathways.org/instance/WP2261" target="_blank">WP2261</a></td>
+                        <td align="center" id="matching-mirna-hits" title="">0</td>
+                        <td align="center" id="matching-mirna-target-hits" title=" hsa-miR-370-3p
+">1</td>
                     </tr><tr>
-                        <td id="name"><a href="#wikipathways-widget-anchor">Apoptosis</a></td>
-                        <td id="identifier"><a href="http://wikipathways.org/instance/WP254">WP254</a></td>
-                        <td id="matching-mirna-hits">0</td>
-                        <td id="matching-mirna-target-hits">1</td>
+                        <td id="name" title="view pathway"><a href="#wikipathways-widget-anchor">Apoptosis</a></td>
+                        <td id="identifier" title="view pathway at WikiPathways.org"><a href="http://wikipathways.org/instance/WP254" target="_blank">WP254</a></td>
+                        <td align="center" id="matching-mirna-hits" title="">0</td>
+                        <td align="center" id="matching-mirna-target-hits" title=" hsa-miR-542-3p
+">1</td>
                     </tr><tr>
-                        <td id="name"><a href="#wikipathways-widget-anchor">Mesodermal Commitment Pathway</a></td>
-                        <td id="identifier"><a href="http://wikipathways.org/instance/WP2857">WP2857</a></td>
-                        <td id="matching-mirna-hits">0</td>
-                        <td id="matching-mirna-target-hits">1</td>
+                        <td id="name" title="view pathway"><a href="#wikipathways-widget-anchor">Mesodermal Commitment Pathway</a></td>
+                        <td id="identifier" title="view pathway at WikiPathways.org"><a href="http://wikipathways.org/instance/WP2857" target="_blank">WP2857</a></td>
+                        <td align="center" id="matching-mirna-hits" title="">0</td>
+                        <td align="center" id="matching-mirna-target-hits" title=" hsa-miR-370-3p
+">1</td>
                     </tr><tr>
-                        <td id="name"><a href="#wikipathways-widget-anchor">Aryl Hydrocarbon Receptor</a></td>
-                        <td id="identifier"><a href="http://wikipathways.org/instance/WP2586">WP2586</a></td>
-                        <td id="matching-mirna-hits">0</td>
-                        <td id="matching-mirna-target-hits">1</td>
+                        <td id="name" title="view pathway"><a href="#wikipathways-widget-anchor">Aryl Hydrocarbon Receptor</a></td>
+                        <td id="identifier" title="view pathway at WikiPathways.org"><a href="http://wikipathways.org/instance/WP2586" target="_blank">WP2586</a></td>
+                        <td align="center" id="matching-mirna-hits" title="">0</td>
+                        <td align="center" id="matching-mirna-target-hits" title=" hsa-miR-370-3p
+">1</td>
                     </tr><tr>
-                        <td id="name"><a href="#wikipathways-widget-anchor">AMPK Signaling</a></td>
-                        <td id="identifier"><a href="http://wikipathways.org/instance/WP1403">WP1403</a></td>
-                        <td id="matching-mirna-hits">0</td>
-                        <td id="matching-mirna-target-hits">1</td>
+                        <td id="name" title="view pathway"><a href="#wikipathways-widget-anchor">AMPK Signaling</a></td>
+                        <td id="identifier" title="view pathway at WikiPathways.org"><a href="http://wikipathways.org/instance/WP1403" target="_blank">WP1403</a></td>
+                        <td align="center" id="matching-mirna-hits" title="">0</td>
+                        <td align="center" id="matching-mirna-target-hits" title=" hsa-miR-370-3p
+">1</td>
                     </tr><tr>
-                        <td id="name"><a href="#wikipathways-widget-anchor">Primary Focal Segmental Glomerulosclerosis FSGS</a></td>
-                        <td id="identifier"><a href="http://wikipathways.org/instance/WP2572">WP2572</a></td>
-                        <td id="matching-mirna-hits">0</td>
-                        <td id="matching-mirna-target-hits">1</td>
+                        <td id="name" title="view pathway"><a href="#wikipathways-widget-anchor">Primary Focal Segmental Glomerulosclerosis FSGS</a></td>
+                        <td id="identifier" title="view pathway at WikiPathways.org"><a href="http://wikipathways.org/instance/WP2572" target="_blank">WP2572</a></td>
+                        <td align="center" id="matching-mirna-hits" title="">0</td>
+                        <td align="center" id="matching-mirna-target-hits" title=" hsa-miR-542-3p
+">1</td>
                     </tr><tr>
-                        <td id="name"><a href="#wikipathways-widget-anchor">SIDS Susceptibility Pathways</a></td>
-                        <td id="identifier"><a href="http://wikipathways.org/instance/WP706">WP706</a></td>
-                        <td id="matching-mirna-hits">0</td>
-                        <td id="matching-mirna-target-hits">1</td>
+                        <td id="name" title="view pathway"><a href="#wikipathways-widget-anchor">SIDS Susceptibility Pathways</a></td>
+                        <td id="identifier" title="view pathway at WikiPathways.org"><a href="http://wikipathways.org/instance/WP706" target="_blank">WP706</a></td>
+                        <td align="center" id="matching-mirna-hits" title="">0</td>
+                        <td align="center" id="matching-mirna-target-hits" title=" hsa-miR-370-3p
+">1</td>
                     </tr><tr>
-                        <td id="name"><a href="#wikipathways-widget-anchor">Eukaryotic Transcription Initiation</a></td>
-                        <td id="identifier"><a href="http://wikipathways.org/instance/WP405">WP405</a></td>
-                        <td id="matching-mirna-hits">0</td>
-                        <td id="matching-mirna-target-hits">1</td>
+                        <td id="name" title="view pathway"><a href="#wikipathways-widget-anchor">Eukaryotic Transcription Initiation</a></td>
+                        <td id="identifier" title="view pathway at WikiPathways.org"><a href="http://wikipathways.org/instance/WP405" target="_blank">WP405</a></td>
+                        <td align="center" id="matching-mirna-hits" title="">0</td>
+                        <td align="center" id="matching-mirna-target-hits" title=" hsa-miR-542-3p
+">1</td>
                     </tr><tr>
-                        <td id="name"><a href="#wikipathways-widget-anchor">MAPK Signaling Pathway</a></td>
-                        <td id="identifier"><a href="http://wikipathways.org/instance/WP382">WP382</a></td>
-                        <td id="matching-mirna-hits">0</td>
-                        <td id="matching-mirna-target-hits">1</td>
+                        <td id="name" title="view pathway"><a href="#wikipathways-widget-anchor">MAPK Signaling Pathway</a></td>
+                        <td id="identifier" title="view pathway at WikiPathways.org"><a href="http://wikipathways.org/instance/WP382" target="_blank">WP382</a></td>
+                        <td align="center" id="matching-mirna-hits" title="">0</td>
+                        <td align="center" id="matching-mirna-target-hits" title=" hsa-miR-370-3p
+">1</td>
                     </tr><tr>
-                        <td id="name"><a href="#wikipathways-widget-anchor">Fatty Acid Beta Oxidation</a></td>
-                        <td id="identifier"><a href="http://wikipathways.org/instance/WP143">WP143</a></td>
-                        <td id="matching-mirna-hits">0</td>
-                        <td id="matching-mirna-target-hits">1</td>
+                        <td id="name" title="view pathway"><a href="#wikipathways-widget-anchor">Fatty Acid Beta Oxidation</a></td>
+                        <td id="identifier" title="view pathway at WikiPathways.org"><a href="http://wikipathways.org/instance/WP143" target="_blank">WP143</a></td>
+                        <td align="center" id="matching-mirna-hits" title="">0</td>
+                        <td align="center" id="matching-mirna-target-hits" title=" hsa-miR-370-3p
+">1</td>
                     </tr><tr>
-                        <td id="name"><a href="#wikipathways-widget-anchor">Rac1/Pak1/p38/MMP-2 pathway</a></td>
-                        <td id="identifier"><a href="http://wikipathways.org/instance/WP3303">WP3303</a></td>
-                        <td id="matching-mirna-hits">0</td>
-                        <td id="matching-mirna-target-hits">1</td>
+                        <td id="name" title="view pathway"><a href="#wikipathways-widget-anchor">Rac1/Pak1/p38/MMP-2 pathway</a></td>
+                        <td id="identifier" title="view pathway at WikiPathways.org"><a href="http://wikipathways.org/instance/WP3303" target="_blank">WP3303</a></td>
+                        <td align="center" id="matching-mirna-hits" title="">0</td>
+                        <td align="center" id="matching-mirna-target-hits" title=" hsa-miR-542-3p
+">1</td>
                     </tr>
                 </table>
                 <a name="wikipathways-widget-anchor"></a>
                 <div id="wikipathways-widget">
+                  <h3>Interactive Pathway Viewer</h3>
                     <iframe
                         src="http://www.wikipathways.org/wpi/PathwayWidget.php?id=WP2332&label[]=hsa-miR-542-3p&label[]=hsa-miR-370-3p&colors=red"
                         width="600px"
