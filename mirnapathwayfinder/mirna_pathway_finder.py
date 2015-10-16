@@ -133,8 +133,8 @@ def MirnaPathwayFinder(
 		}
 	    </style>
             <body>
-		<h2>miRNA Pathway Finder</h2>
-		<p>The table lists pathways containing your miRNAs of interest and/or protein targets of your miRNAs. The first column lists a clickable pathway title that updates the Interactive Pathway Viewer below. The second column lists pathway identifers that link to WikiPathways.org. The list is sorted by "miRNAs" (primary) and by "miRNA Targets" (secondary) found on each pathway. The top 20 results are lists.</p>
+		<h2>Pathway Finder</h2>
+		<p>The table lists pathways containing your miRNAs of interest and/or protein targets of your miRNAs. The first column lists a clickable pathway title that updates the Interactive Pathway Viewer below. The second column lists pathway identifers that link to WikiPathways.org. The list is sorted by "miRNAs" (primary) and by "miRNA Targets" (secondary) found on each pathway. The top 20 results are listed.</p>
 		<h3>Table of Pathway Results</h3>
                 <table id="pathway-to-mirna">
                     <tr>
