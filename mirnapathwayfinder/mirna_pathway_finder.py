@@ -2,19 +2,15 @@
 # -*- coding: utf-8 -*-
 
 import csv
-import json
 import os
-import operator
-from os import listdir
-from os.path import isfile, join
 import pystache
 import re
-import rx
 from rx import Observable, Observer
 import urllib
 
+
 def MirnaPathwayFinder(
-        mappings_path='./wp-mir-table-hs.csv',
+        mappings_path=None,
         query_values=None,
         query_value_list_column_index=0,
         node_type='rna',
@@ -25,6 +21,10 @@ def MirnaPathwayFinder(
     def print_debug(message):
         if debug:
             print message
+
+    current_path = os.path.dirname(os.path.abspath(__file__))
+    if mappings_path is None:
+        mappings_path = os.path.join(current_path, '..', 'wp-mir-table-hs.csv')
 
     pathway_to_mirna_mappings = mappings_path
     pathway_to_mirna_mappings_list = []
@@ -58,7 +58,8 @@ def MirnaPathwayFinder(
             query_value_list.append(query_values)
 
     # TODO handle the case where the query values are NOT display names
-    # TODO use the gene_hits, mirna hits and mirna targets hits instead of just the query values to create this string
+    # TODO use the gene_hits, mirna hits and mirna targets hits instead of
+    # just the query values to create this string
     highlight_values = map(lambda query_value: 'label[]=' + urllib.quote(query_value), query_value_list)
     highlight_string = str.join('&', highlight_values) + '&colors=red'
 
@@ -76,8 +77,10 @@ def MirnaPathwayFinder(
         return 'http://www.wikipathways.org/wpi/PathwayWidget.php?id=' + mapping['identifier'] + '&' + highlight_string
 
     def get_hits_and_counts(mapping):
-        # NOTE: we're not currently using the matching gene hits. They are intended to
-        # be used for specifying which node(s) to highlight, in the case that miRNAs
+        # NOTE: we're not currently using the matching gene hits.
+        # They are intended to
+        # be used for specifying which node(s) to highlight,
+        # in the case that miRNAs
         # are annotated with gene ids.
         mapping['matching_gene_hits'] = map(lambda matching_gene_hit: dict([('name', matching_gene_hit)]), set(mapping['gene_hits']).intersection(query_value_list))
         mapping['matching_gene_hit_count'] = len(mapping['matching_gene_hits'])
@@ -177,10 +180,12 @@ def MirnaPathwayFinder(
         widget_uri = generate_widget_uri(mappings[0])
         initial_html_string = pystache.render(table_template, mappings)
         html_string_with_widget_url = initial_html_string.replace('widget_uri', widget_uri)
-        with open('./mirnapathwayfinder/update-widget.js', 'r') as update_widget:
+
+        update_widget_path = os.path.join(current_path, 'update-widget.js')
+        with open(update_widget_path, 'r') as update_widget:
             update_widget_string = 'var highlightString = \'' + highlight_string + '\';\n' + update_widget.read()
         html_string_with_update_widget = html_string_with_widget_url.replace('update_widget_string', update_widget_string)
-        f = open(output_dir + '/pathways.html', 'w')
+        f = open(os.path.join(output_dir, 'pathways.html'), 'w')
         f.write(html_string_with_update_widget)
         return html_string_with_update_widget
 
