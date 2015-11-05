@@ -1,4 +1,4 @@
-window.addEventListener('load', function() {
+window.addEventListener('click', function() {
   function updateWidget(identifier) {
     var widget = d3.select('#wikipathways-widget').selectAll('iframe')
       .data([3])
