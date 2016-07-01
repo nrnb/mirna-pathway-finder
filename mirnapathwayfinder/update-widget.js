@@ -1,6 +1,6 @@
-window.addEventListener('load', function() {
+window.addEventListener('click', function() {
   function updateWidget(identifier) {
-    var widget = d3.select('body').select('#wikipathways-widget').selectAll('iframe')
+    var widget = d3.select('#wikipathways-widget').selectAll('iframe')
       .data([3])
       .attr('src', 'http://www.wikipathways.org/wpi/PathwayWidget.php?id=' + identifier + '&' + highlightString);
 

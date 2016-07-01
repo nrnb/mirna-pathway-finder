@@ -10,7 +10,7 @@ annotatePathways.R starts with a tab-delimited gmt file from wikipathway.org, a 
 
 * gene-mir-map.txt -- generated at biomart: latest release (r81) of human genome, filter for all genes with Entrez Gene annotation, annotate with mirtarbase IDs. Downloaded table and edited in Excel to keep complete, unique rows of Entrez Gene and mirtarbase ID columns.
 
-* mir-gene-targets.txt -- from hsa_MTI.xlsx (http://mirtarbase.mbc.nctu.edu.tw/php/download.php). Deleted all columns except: mirtarbase IDs and Entrez Gene targets. Script reads and makes unique.
+* mir-gene-targets.txt -- from hsa_MTI.xlsx (http://mirtarbase.mbc.nctu.edu.tw/php/download.php). Deleted all columns except: miRNA (like hsa-miR-181a-5p) and Entrez Gene targets (like 1848). Script reads and makes unique.
 
 ## Output
 

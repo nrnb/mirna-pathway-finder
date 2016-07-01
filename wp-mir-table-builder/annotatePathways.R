@@ -21,7 +21,8 @@ lines=readLines(file)
 ## swap separators for accurate parsing -- human-only
 sub=grep("Homo sapiens",substr(lines,1,500))
 length(lines[sub])
-linesHs=gsub("\\(Homo sapiens\\)\\\t(http://wikipathways.org/instance/WP[0-9]+)\\\t","~\\1~",lines[sub])
+## old gmt format: linesHs=gsub("\\(Homo sapiens\\)\\\t(http://wikipathways.org/instance/WP[0-9]+)\\\t","~\\1~",lines[sub])
+linesHs=gsub("\\%WikiPathways_.*(http://www.wikipathways.org/instance/WP[0-9]+)_r[0-9]+\\\t","~\\1~",lines[sub])
 linesHs2=gsub("\\\t",",",linesHs)
 linesHs2
 gmtHs=read.table(text=linesHs2,header=F,sep="~",fill=F,stringsAsFactors=F,col.names=c("name","link","genes"))
