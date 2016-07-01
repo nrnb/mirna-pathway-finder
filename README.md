@@ -3,14 +3,13 @@ Find pathways with [microRNAs](http://www.ncbi.nlm.nih.gov/pubmed/14744438) (miR
 
 miRNAs target genes to regulate gene expression.  As a component for the Genboree workbench, this library:
 
-1. takes as input a user-specified list of miRNAs and
-2. produces as output a list of pathways that contain
+1. takes as input a user-specified list of miRNAs
+2. combines that input with pre-processed miRNA-to-gene mapping data, as described [here](https://github.com/nrnb/mirna-pathway-finder/blob/master/wp-mir-table-builder/wp-mir-table-hs-readme.txt)
+3. produces as output a list of pathways that contain
   1. one or more miRNAs from the user-specified list, and/or 
   2. one or more genes that are targeted by one or more of the miRNAs from the user-specified list
 
-miRNA to gene mapping is performed by pre-processing, as described [here](https://github.com/nrnb/mirna-pathway-finder/blob/master/wp-mir-table-builder/wp-mir-table-hs-readme.txt).
-
-The output table looks like this:
+The list is displayed as a table that looks like this:
 
 | *Pathway Title* | *Linkout* | *miRNAs on Pathway* | *Targets on Pathway (Targeting miRNAs)* |
 | --------------- | --------- | -------- | --------------- |
