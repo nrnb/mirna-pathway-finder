@@ -1,7 +1,21 @@
 # mirna-pathway-finder
-Find pathways with miRNAs at WikiPathways.
+Find pathways with [microRNAs](http://www.ncbi.nlm.nih.gov/pubmed/14744438) (miRNAs) at WikiPathways.
 
-A component for the Genboree workbench.
+miRNAs target genes to regulate gene expression.  As a component for the Genboree workbench, this library:
+1. takes as input a user-specified list of miRNAs and
+2. produces as output a list of pathways that contain
+   A. one or more miRNAs from the user-specified list, and/or 
+   B. one or more genes that are targeted by one or more of the miRNAs from the user-specified list
+
+miRNA to gene mapping is performed by pre-processing, as described [here](https://github.com/nrnb/mirna-pathway-finder/blob/master/wp-mir-table-builder/wp-mir-table-hs-readme.txt).
+
+The output table looks like this:
+
+| *Pathway Title* | *Linkout* | *miRNAs* | *miRNA Targets* |
+| --------------- | --------- | -------- | --------------- |
+| Sample Pathway | [WP4](http://www.wikipathways.org/wpi/WP4) | 2 | 3 |
+| Sample Pathway | [WP4](http://www.wikipathways.org/wpi/WP4) | 2 | 3 |
+| Sample Pathway | [WP4](http://www.wikipathways.org/wpi/WP4) | 2 | 3 |
 
 ## To install
 
