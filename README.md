@@ -1,11 +1,13 @@
 # mirna-pathway-finder
 Find pathways with [microRNAs](http://www.ncbi.nlm.nih.gov/pubmed/14744438) (miRNAs) at WikiPathways.
 
-miRNAs target genes to regulate gene expression.  As a component for the Genboree workbench, this library:
+miRNAs can regulate gene expression through interactions with messenger RNAs (mRNAs). Although the actual interaction may be technically between the miRNA and mRNA, this process is often described more loosely as the miRNA *targeting* any one of the *gene*, the transcribed *mRNA* or the translated *protein*, as desired in the relevant context.
 
-1. takes as input a user-specified list of miRNAs
+As a component for the Genboree workbench, this library:
+
+1. takes as *input* a user-specified list of miRNAs
 2. combines that input with pre-processed miRNA-to-gene mapping data, as described [here](https://github.com/nrnb/mirna-pathway-finder/blob/master/wp-mir-table-builder/wp-mir-table-hs-readme.txt)
-3. produces as output a list of pathways that contain
+3. produces as *output* a list of pathways that contain
   1. one or more miRNAs from the user-specified list, and/or 
   2. one or more genes that are targeted by one or more of the miRNAs from the user-specified list
 
