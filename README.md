@@ -13,7 +13,7 @@ As a component for the Genboree workbench, this library:
 
 The list is displayed as a table that looks like this:
 
-| *Pathway Title* | *Linkout* | *miRNAs on Pathway* | *Targets on Pathway (Targeting miRNAs)* |
+| Pathway Title | Linkout | miRNAs on Pathway | Targets on Pathway (Targeting miRNAs) |
 | --------------- | --------- | -------- | --------------- |
 | Sample Pathway | [WP4](http://www.wikipathways.org/wpi/WP4) | 0 | 3 (1) |
 | Sample Pathway | [WP5](http://www.wikipathways.org/wpi/WP4) | 2 | 3 (2) |
