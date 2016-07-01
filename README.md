@@ -12,11 +12,11 @@ miRNA to gene mapping is performed by pre-processing, as described [here](https:
 
 The output table looks like this:
 
-| *Pathway Title* | *Linkout* | *miRNAs* | *miRNA Targets* |
+| *Pathway Title* | *Linkout* | *miRNAs on Pathway* | *Targets on Pathway (Targeting miRNAs)* |
 | --------------- | --------- | -------- | --------------- |
-| Sample Pathway | [WP4](http://www.wikipathways.org/wpi/WP4) | 2 | 3 |
-| Sample Pathway | [WP4](http://www.wikipathways.org/wpi/WP4) | 2 | 3 |
-| Sample Pathway | [WP4](http://www.wikipathways.org/wpi/WP4) | 2 | 3 |
+| Sample Pathway | [WP4](http://www.wikipathways.org/wpi/WP4) | 0 | 3 (1) |
+| Sample Pathway | [WP5](http://www.wikipathways.org/wpi/WP4) | 2 | 3 (2) |
+| Sample Pathway | [WP6](http://www.wikipathways.org/wpi/WP4) | 2 | 3 (1) |
 
 ## To install
 
