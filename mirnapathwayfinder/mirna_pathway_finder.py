@@ -26,6 +26,14 @@ def MirnaPathwayFinder(
     if mappings_path is None:
         mappings_path = os.path.join(current_path, '..', 'wp-mir-table-hs.csv')
 
+    # parse wp-mir-table-hs.csv (or other file, if specified)
+    # to get mappings between pathways and mirnas,
+    # including for each pathway:
+    # * gene_hits: targeted genes
+    # * mirna_hits: miRNAs actually existing in pathway
+    # * targeting_mirna_hits: miRNAs actually existing in the pathway or
+    #       inferred to exist in the pathway because they target genes or
+    #       proteins that actually exist in the pathway
     pathway_to_mirna_mappings = mappings_path
     pathway_to_mirna_mappings_list = []
     if os.path.isfile(pathway_to_mirna_mappings):
@@ -34,9 +42,17 @@ def MirnaPathwayFinder(
             for row in pathway_to_mirna_mappings_reader:
                 gene_hits = row['ghits'].split(',')
                 mirna_hits = row['mhits'].split(',')
-                mirna_target_hits = row['mthits'].split(',')
+                targeting_mirna_hits = row['mthits'].split(',')
                 wp_identifier = re.search('WP\d+', row['link']).group(0)
-                parsed_row = dict([('name', row['name']), ('identifier', wp_identifier), ('id', row['link']), ('gene_hits', gene_hits), ('mirna_hits', mirna_hits), ('mirna_target_hits', mirna_target_hits)])
+                parsed_row = {
+                    'name': row['name'],
+                    'identifier': wp_identifier,
+                    'id': row['link'],
+                    'gene_hits': gene_hits,
+                    'mirna_hits': mirna_hits,
+                    'targeting_mirna_hits':
+                        targeting_mirna_hits,
+                }
                 pathway_to_mirna_mappings_list.append(parsed_row)
     else:
         if hasattr(pathway_to_mirna_mappings, '__iter__'):
@@ -82,16 +98,22 @@ def MirnaPathwayFinder(
         # be used for specifying which node(s) to highlight,
         # in the case that miRNAs
         # are annotated with gene ids.
-        mapping['matching_gene_hits'] = map(lambda matching_gene_hit: dict([('name', matching_gene_hit)]), set(mapping['gene_hits']).intersection(query_value_list))
-        mapping['matching_gene_hit_count'] = len(mapping['matching_gene_hits'])
-        mapping['matching_mirna_hits'] = map(lambda matching_mrna_hit: dict([('name', matching_mrna_hit)]), set(mapping['mirna_hits']).intersection(query_value_list))
-        mapping['matching_mirna_hit_count'] = len(mapping['matching_mirna_hits'])
-        mapping['matching_mirna_target_hits'] = map(lambda mirna_target_hit: dict([('name', mirna_target_hit)]), set(mapping['mirna_target_hits']).intersection(query_value_list))
-        mapping['matching_mirna_target_hit_count'] = len(mapping['matching_mirna_target_hits'])
+        gene_query_value_list = set(mapping['gene_hits']).intersection(query_value_list)
+        mapping['gene_hits'] = map(lambda gene_hit: {'name': gene_hit}, gene_query_value_list)
+        mapping['gene_hit_count'] = len(mapping['gene_hits'])
+
+        mirna_query_value_list = set(mapping['mirna_hits']).intersection(query_value_list)
+        mapping['mirna_hits'] = map(lambda mirna_hit: {'name': mirna_hit}, mirna_query_value_list)
+        mapping['mirna_hit_count'] = len(mapping['mirna_hits'])
+
+        targeting_mirna_query_value_list = set(mapping['targeting_mirna_hits']).intersection(query_value_list)
+        mapping['targeting_mirna_hits'] = map(lambda targeting_mirna_hit: {'name': targeting_mirna_hit}, targeting_mirna_query_value_list)
+        mapping['targeting_mirna_hit_count'] = len(mapping['targeting_mirna_hits'])
+
         return mapping
 
     def has_hit(mapping):
-        hit_count = mapping['matching_gene_hit_count'] + mapping['matching_mirna_hit_count'] + mapping['matching_mirna_target_hit_count']
+        hit_count = mapping['gene_hit_count'] + mapping['mirna_hit_count'] + mapping['targeting_mirna_hit_count']
         return hit_count > 0
 
     table_template = '''<!DOCTYPE html>
@@ -137,20 +159,21 @@ def MirnaPathwayFinder(
             </style>
             <body>
                 <h2>Pathway Finder</h2>
-                <p>The table lists pathways containing your miRNAs of interest and/or protein targets of your miRNAs. The first column lists a clickable pathway title that updates the Interactive Pathway Viewer below. The second column lists pathway identifers that link to WikiPathways.org. The list is sorted by "miRNAs" (primary) and by "miRNA Targets" (secondary) found on each pathway. The top 20 results are listed.</p>
+                <p>The table lists pathways containing your miRNAs of interest and/or gene product targets of your miRNAs. The first column lists a clickable pathway title that updates the Interactive Pathway Viewer below. The second column lists pathway identifiers that link to WikiPathways.org. The third column shows the miRNA count in each pathway. The last column shows the count of the gene products targeted by miRNAs and, in parentheses, the count of the miRNAs doing the targeting.</p>
+                <p>The list is sorted by "miRNAs" (primary) and by "miRNA Targets" (secondary) found on each pathway. The results are limited to the top 20.</p>
                 <h3>Table of Pathway Results</h3>
                 <table id="pathway-to-mirna">
                     <tr>
                         <th>Pathway Title <i>(click to view pathway)</i></th>
                         <th>Linkout</th>
-                        <th>miRNAs</th>
-                        <th>miRNA Targets</th>
+                        <th>miRNAs on Pathway</th>
+                        <th>Targets on Pathway (Targeting miRNAs)</th>
                     </tr>
                     {{#.}}<tr>
                         <td id="name" title="view pathway"><a href="#wikipathways-widget-anchor">{{name}}</a></td>
                         <td id="identifier" title="view pathway at WikiPathways.org"><a href="{{id}}" target="_blank">{{identifier}}</a></td>
-                        <td align="center" id="matching-mirna-hits" title="{{#matching_mirna_hits}} {{name}}\n{{/matching_mirna_hits}}">{{matching_mirna_hit_count}}</td>
-                        <td align="center" id="matching-mirna-target-hits" title="{{#matching_mirna_target_hits}} {{name}}\n{{/matching_mirna_target_hits}}">{{matching_mirna_target_hit_count}}</td>
+                        <td align="center" id="matching-mirna-hits" title="{{#mirna_hits}} {{name}}\n{{/mirna_hits}}">{{mirna_hit_count}}</td>
+                        <td align="center" id="matching-mirna-target-hits" title="{{#targeting_mirna_hits}} {{name}}\n{{/targeting_mirna_hits}}">0 ({{targeting_mirna_hit_count}})</td>
                     </tr>{{/.}}
                 </table>
                 <a name="wikipathways-widget-anchor"></a>
@@ -171,10 +194,10 @@ def MirnaPathwayFinder(
         </html>'''
 
     def sort_by_hit_counts(mappings):
-        return sorted(mappings, key=lambda mapping: (mapping['matching_mirna_hit_count'], mapping['matching_mirna_target_hit_count']), reverse=True)
+        return sorted(mappings, key=lambda mapping: (mapping['mirna_hit_count'], mapping['targeting_mirna_hit_count']), reverse=True)
 
     def take_top_hits(mappings):
-        return mappings[0:19]
+        return mappings[0:20]
 
     def generate_pathways_table(mappings):
         widget_uri = generate_widget_uri(mappings[0])
@@ -189,6 +212,7 @@ def MirnaPathwayFinder(
         f.write(html_string_with_update_widget)
         return html_string_with_update_widget
 
+    # Run to return result
     mappings_source = Observable.from_(pathway_to_mirna_mappings_list)
-    matching_mappings = mappings_source.map(get_hits_and_counts).filter(has_hit).to_list().map(sort_by_hit_counts).map(take_top_hits).map(generate_pathways_table)
-    matching_mappings.subscribe(MyObserver())
+    mappings = mappings_source.map(get_hits_and_counts).filter(has_hit).to_list().map(sort_by_hit_counts).map(take_top_hits).map(generate_pathways_table)
+    mappings.subscribe(MyObserver())
