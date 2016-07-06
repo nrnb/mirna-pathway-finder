@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+    <html>
+	<style>
+	    body {
+		font: 11px tahoma,arial,helvetica,sans-serif;
+	    }
+	    #pathway-to-mirna {
+		    font-family: "tahoma,arial,helvetica,sans-serif"
+		    font-size: 11px;
+		    background: none repeat scroll 0% 0% #FFF;
+		    width: 600px;
+		    border-collapse: collapse;
+		    text-align: left;
+		    margin: 20px;
+	    }
+	    #pathway-to-mirna th {
+		    border-bottom: 1px solid #AAA;
+		    padding: 0px 0px 3px;
+	    }
+	    #pathway-to-mirna tr:hover {
+		    background-color:#DDD;
+	    }
+	    a:link {
+		text-decoration: none;
+	    }
+
+	    a:visited {
+		text-decoration: none;
+	    }
+
+	    a:hover {
+		text-decoration: underline;
+	    }
+
+	    a:active {
+		text-decoration: underline;
+	    }
+	    p {
+		    max-width:600px;
+	    }
+	</style>
+	<body>
+	    <h2>Pathway Finder</h2>
+	    <p>The table lists pathways containing your miRNAs of interest and/or targets of your miRNAs. The first column lists a clickable pathway title that updates the Interactive Pathway Viewer below. The second column lists pathway identifiers that link to WikiPathways.org. The third column shows count of your miRNAs in each pathway. The last column shows the count of the targets of your miRNAs and, in parentheses, the count of the miRNAs doing the targeting.</p>
+	    <p>The list is sorted by "miRNAs on Pathway" (primary) and by "Targets on Pathway" (secondary). The results are limited to the top 20 pathways.</p>
+	    <h3>Table of Pathway Results</h3>
+	    <table id="pathway-to-mirna">
+		<tr>
+		    <th>Pathway Title <i>(click to view pathway)</i></th>
+		    <th>Linkout</th>
+		    <th align="center">miRNAs on Pathway</th>
+		    <th align="center">Targets on Pathway<br>(Targeting miRNAs)</th>
+		</tr>
+		{{#.}}<tr>
+		    <td id="name" title="view pathway"><a href="#wikipathways-widget-anchor">{{name}}</a></td>
+		    <td id="identifier" title="view pathway at WikiPathways.org"><a href="{{id}}" target="_blank">{{identifier}}</a></td>
+		    <td align="center" id="mirna-matches" title="{{#mirna_matches_specified}} {{name}}; {{/mirna_matches_specified}}">{{mirna_match_specified_count}}</td>
+        <td align="center" id="target-matches" title="{{#target_matches_by_mirna}} {{mirna}}: {{targets}}; {{/target_matches_by_mirna}}">{{target_match_count}} ({{mirna_match_all_count}})</td>
+		</tr>{{/.}}
+	    </table>
+	    <a name="wikipathways-widget-anchor"></a>
+	    <div id="wikipathways-widget">
+	      <h3>Interactive Pathway Viewer</h3>
+		<iframe
+		    src="widget_uri"
+		    width="600px"
+		    height="300px"
+		    style="overflow:hidden;">
+		</iframe>
+	    </div>
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+	    <script type="text/javascript">
+		update_widget_string
+	    </script>
+	</body>
+    </html>

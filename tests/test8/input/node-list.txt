@@ -1,0 +1,6 @@
+hsa-miR-542-3p	4589876	rtyuioiuy	5678987	oijhb
+hsa-miR-370-3p	fghjklk	678987	ghjkjh
+hsa-mir-133a-2	njw4rt	rtyuioiuy	acn	oijhb
+hsa-mir-21	3	1	9	33,1
+hsa-miR-26a-5p	3	1	9	33,1
+hsa-miR-335-5p	3	1	9	33,1
