@@ -54,8 +54,8 @@
 		{{#.}}<tr>
 		    <td id="name" title="view pathway"><a href="#wikipathways-widget-anchor">{{name}}</a></td>
 		    <td id="identifier" title="view pathway at WikiPathways.org"><a href="{{id}}" target="_blank">{{identifier}}</a></td>
-		    <td align="center" id="mirna-matches" title="{{#mirna_matches_specified}} {{name}}; {{/mirna_matches_specified}}">{{mirna_match_specified_count}}</td>
-        <td align="center" id="target-matches" title="{{#target_matches_by_mirna}} {{mirna}}: {{targets}}; {{/target_matches_by_mirna}}">{{target_match_count}} ({{mirna_match_all_count}})</td>
+		    <td align="center" id="mirna-matches" title="{{#shown_targeters}} {{name}}; {{/shown_targeters}}">{{shown_targeter_count}}</td>
+        <td align="center" id="target-matches" title="{{#targets_by_targeters}} {{targeter}}: {{targets}}; {{/targets_by_targeters}}">{{target_count}} ({{targeter_count}})</td>
 		</tr>{{/.}}
 	    </table>
 	    <a name="wikipathways-widget-anchor"></a>
