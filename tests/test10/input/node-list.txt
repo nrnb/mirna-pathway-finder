@@ -1,0 +1,16 @@
+miR-122-5p
+miR-16-5p
+miR-191-5p
+miR-192-5p
+miR-194-5p
+miR-19b-3p
+miR-301b-3p
+miR-30d-5p
+miR-320a
+miR-320b
+miR-342-3p
+miR-4446-3p
+miR-486-5p
+miR-574-3p
+miR-616-5p
+miR-664b-3p
