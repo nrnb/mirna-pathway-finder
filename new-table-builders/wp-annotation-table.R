@@ -40,7 +40,10 @@ buildHash <- function(lst1){
 
 exportList2Csv <- function(l){
     d<-as.data.frame(l)
-    e <- data.frame(lapply(d, as.character),row.names=c("title","version","wpid","species","url"), stringsAsFactors=FALSE)
+    e<-data.frame(lapply(d, as.character),row.names=c("title","version","wpid","species","url"), stringsAsFactors=FALSE)
+    #reorder rows
+    e<-e[c("wpid","title","version","species","url"),]
+    #write transposed df
     write.csv(t(e), file ="wp_annot_hash.csv",row.names=FALSE)
 }
 
