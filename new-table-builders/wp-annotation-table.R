@@ -5,6 +5,7 @@
 # col2: Version
 # col3: Species
 # col4: URL
+# col5: Total gene count
 
 #######
 ## LIBS
@@ -22,15 +23,27 @@ fname<-"wikipathways-20170210-gmt-Homo_sapiens.gmt"
 ############
 ## FUNCTIONS
 
+addCounts<- function(tmp,cnt){
+    i=1
+    while(i<=length(tmp)){
+        tmp[[i]][[6]]=cnt[[i]]
+        i=i+1
+    }
+    return(tmp)
+}
+
 processGMT <- function(fname) {
     tmp = readLines(fname)
     tmp2 = sapply(tmp,strsplit,"\t|%")
-    # keep the first five columns
+    # count genes
+    cnt = lapply(tmp2,function(y) length(y)-5)
+    # keep the first five columns then add count column
     tmp3=lapply(tmp2,function(y) y[1:5])
+    tmp4=addCounts(tmp3,cnt)
     # remove any list items with length 0
     # These were blank lines in the original file
-    tmp4 = tmp3[sapply(tmp3,length)>0]
-    return(tmp4)
+    tmp5 = tmp4[sapply(tmp4,length)>0]
+    return(tmp5)
 }
 
 buildHash <- function(lst1){
@@ -40,9 +53,9 @@ buildHash <- function(lst1){
 
 exportList2Csv <- function(l){
     d<-as.data.frame(l)
-    e<-data.frame(lapply(d, as.character),row.names=c("title","version","wpid","species","url"), stringsAsFactors=FALSE)
+    e<-data.frame(lapply(d, as.character),row.names=c("title","version","wpid","species","url","total gene count"), stringsAsFactors=FALSE)
     #reorder rows
-    e<-e[c("wpid","title","version","species","url"),]
+    e<-e[c("wpid","title","version","species","url","total gene count"),]
     #write transposed df
     write.csv(t(e), file ="wp_annot_hash.csv",row.names=FALSE)
 }
