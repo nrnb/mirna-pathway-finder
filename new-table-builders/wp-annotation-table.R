@@ -17,7 +17,7 @@ library(hash)
 ## INPUTS
 
 # gmt file
-fname<-"wikipathways-20170210-gmt-Homo_sapiens.gmt"
+fname<-"inputs/wikipathways-20170210-gmt-Homo_sapiens.gmt"
 
 
 ############
