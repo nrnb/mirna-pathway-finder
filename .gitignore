@@ -1,3 +1,10 @@
+# Large input files
+new-table-builders/inputs/*
+
+# RStudio files
+*.RData
+*.Rhistory
+
 # Test data
 source_xgmml/*.xgmml
 source_xgmml/*.p
