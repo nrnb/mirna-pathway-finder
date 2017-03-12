@@ -46,9 +46,9 @@ processGMT <- function(fname) {
     return(tmp5)
 }
 
+# build hash from list of lists, using 3rd column as key
 buildHash <- function(lst1){
-    h1 = hash(keys=sapply(lst1,'[[',3), values=lapply(lst1,function(y) y[-3]))
-    return(h1)
+    return(hash(keys=sapply(lst1,'[[',3), values=lapply(lst1,function(y) y[-3])))
 }
 
 exportList2Csv <- function(l){
