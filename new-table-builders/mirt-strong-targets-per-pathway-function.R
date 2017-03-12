@@ -10,7 +10,6 @@
 #install.packages("hash")
 library(hash)
 
-library(foreach)
 
 #########
 ## INPUTS
