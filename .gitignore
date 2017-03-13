@@ -1,6 +1,3 @@
-# Large input files
-new-table-builders/inputs/*
-
 # RStudio files
 *.RData
 *.Rhistory
