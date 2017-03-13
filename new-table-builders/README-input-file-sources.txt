@@ -6,7 +6,7 @@
 
 * hsa_MTI_r#.#.xlsx -- downloaded from http://mirtarbase.mbc.nctu.edu.tw/php/download.php. Contains miRTarBase IDs for targeting miRNAs and Entrez for gene targets. Also includes strong/weak and pmid refs. PROCESSING: Release number added to filename.
 
-* mart_export_v##.csv -- exported from BioMART at http://www.ensembl.org/biomart/. See screenshot "mart_export.png". Filter for lincRMA, miRNA and processed_transcript; Attributes: entrez and mirbase ids. Export as CSV, unique results only. PROCESSING: Version number added to filename and extension set to CSV. Removed rows with blanks in Excel and renamed header rows: "entrez", "mirbase"
+* [IGNORE] mart_export_v##.csv -- exported from BioMART at http://www.ensembl.org/biomart/. See screenshot "mart_export.png". Filter for lincRMA, miRNA and processed_transcript; Attributes: entrez and mirbase ids. Export as CSV, unique results only. PROCESSING: Version number added to filename and extension set to CSV. Removed rows with blanks in Excel and renamed header rows: "entrez", "mirbase"
 
 
 ###################
@@ -22,9 +22,9 @@
   6. save each tab as: mirtarbase-entrez-targets-(strong|funcional).csv
   7. save hsa_MTI.xlsx
 
-* mirt_entreztargets_***_hash.csv/robj
-  1. run mirt_entreztargets-***-table.R
+* mirt_targets_***_hash.csv/robj
+  1. source mirt_targets-builder.R (shiny)
 
-* mirt_wptargets_***_hash.csv/robj
-  1. run mirt-wptaragets-***-table.R, update input file settings 
+* mirt_targeting_***_hash.csv/robj
+  1. source mirt-targeting-builder.R (shiny)
   
