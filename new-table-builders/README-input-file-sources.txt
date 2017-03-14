@@ -8,6 +8,8 @@
 
 * [IGNORE] mart_export_v##.csv -- exported from BioMART at http://www.ensembl.org/biomart/. See screenshot "mart_export.png". Filter for lincRMA, miRNA and processed_transcript; Attributes: entrez and mirbase ids. Export as CSV, unique results only. PROCESSING: Version number added to filename and extension set to CSV. Removed rows with blanks in Excel and renamed header rows: "entrez", "mirbase"
 
+* [OPTIONAL] mirna_mature.txt -- downloaded from ftp://mirbase.org/pub/mirbase/CURRENT/database_files/ (log in as Guest). This file can be processed into a CSV to be used to prepare a _direct_ mapping from mirtarbase ids to pathway elements, i.e., via an additional MIMAT->Entrez mapping set by BridgeDb.  PROCESSING: Open in Excel. Filter for mirtarbase mature names that begin with "hsa"; copy mirtarbase and mimat id columns to new tab and export as mirna_mature.csv.
+
 
 ###################
 ## PROCESSED INPUTS
@@ -28,3 +30,4 @@
 * mirt_targeting_***_hash.csv/robj
   1. source mirt-targeting-builder.R (shiny)
   
+
