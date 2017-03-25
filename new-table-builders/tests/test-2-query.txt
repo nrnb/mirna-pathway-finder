@@ -8,4 +8,4 @@ species=mouse
 
 database=mirtarbase
 
-identifiers=mmu-miR-34b-5p,mmu-miR-34c-5p
+identifiers=mmu-miR-34b-5p,mmu-miR-34-5p
