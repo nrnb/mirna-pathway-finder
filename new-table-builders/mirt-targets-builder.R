@@ -18,18 +18,18 @@ library(shiny)
 
 # mirtarebase_entrez targets csv files
 targets<-NULL
-targets_strong<-"inputs/mirtarbase-entrez-targets-strong.csv"
-targets_functional<-"inputs/mirtarbase-entrez-targets-functional.csv"
+targets_strong<-"inputs/hsa-mirtarbase-entrez-targets-strong.csv"
+targets_functional<-"inputs/hsa-mirtarbase-entrez-targets-functional.csv"
 
 ##########
 ## OUTPUTS
 
 outcsv<-NULL
-outcsv_strong<-"outputs/mirt_targets_strong_hash.csv"
-outcsv_functional<-"outputs/mirt_targets_functional_hash.csv"
+outcsv_strong<-"outputs/hsa_mirt_targets_strong_hash.csv"
+outcsv_functional<-"outputs/hsa_mirt_targets_functional_hash.csv"
 outrobj<-NULL
-outrobj_strong<-"outputs/mirt_targets_strong_hash.robj"
-outrobj_functional<-"outputs/mirt_targets_functional_hash.robj"
+outrobj_strong<-"outputs/hsa_mirt_targets_strong_hash.robj"
+outrobj_functional<-"outputs/hsa_mirt_targets_functional_hash.robj"
 
 ############
 ## FUNCTIONS

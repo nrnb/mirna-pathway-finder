@@ -14,20 +14,27 @@
 ###################
 ## PROCESSED INPUTS
 
-* mirtarbase-entrez-targets-***.csv
+* hsa-mirtarbase-entrez-targets-***.csv
   1. open hsa_MTI.xlsx in Excel
   2. filter for strong support type: "Functional MTI" (i.e., not weak)
   3. copy columns to new tab called "strong": miRNA, Target Gene (Entrez)
   4. filter for both strong and weak support types: "Functional MTI" or "Functional MIT (Weak)"
   5. copy columns to new tab called "funcional": miRNA, Target Gene (Entrez)
-  6. confirm paste lengths, remove rows with blanks and rename column header rows: "mirtarbase", "entrez targets"
-  6. save each tab as: mirtarbase-entrez-targets-(strong|funcional).csv
-  7. save hsa_MTI.xlsx
+  6. [important!] confirm paste lengths
+  7. remove rows with blanks and rename column header rows: "mirtarbase", "entrez targets"
+  8. save hsa_MTI.xlsx
+  9. save each tab as: hsa-mirtarbase-entrez-targets-(strong|funcional).csv
 
-* mirt_targets_***_hash.csv/robj
+
+* hsa_mirt_targets_***_hash.csv/robj
   1. source mirt_targets-builder.R (shiny)
 
-* mirt_targeting_***_hash.csv/robj
+* hsa_direct_entrez_wp_hash.csv/robj
+  1. source direct-entrez-builder.R (runs lines automatically)
+
+* hsa_mirt_targeting_***_hash.csv/robj
   1. source mirt-targeting-builder.R (shiny)
   
+* hsa_wp_annot_hash.csv/robj
+  1. source wp-annotation-builder.R
 

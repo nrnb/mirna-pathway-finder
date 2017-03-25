@@ -38,7 +38,7 @@ library(hash)
 ## INPUTS
 
 # entrez_wp_hash
-load("outputs/direct_entrez_wp_hash.robj")
+load("outputs/hsa_direct_entrez_wp_hash.robj")
 
 ############
 ## FUNCTIONS
@@ -69,9 +69,9 @@ hitsPerPathway<-function(query,queryType="entrez",hitType="direct",supportType="
         if(hitType=="targets"){
             targetLists<-NULL
             if(supportType=="strong"){
-                load("outputs/mirt_targets_strong_hash.robj")
+                load("outputs/hsa_mirt_targets_strong_hash.robj")
             } else if (supportType=="all"){
-                load("outputs/mirt_targets_functional_hash.robj")
+                load("outputs/hsa_mirt_targets_functional_hash.robj")
             } else {
                 stop(cat("Support type",supportType,"is not supported!"))
             }
@@ -82,9 +82,9 @@ hitsPerPathway<-function(query,queryType="entrez",hitType="direct",supportType="
         } else if (hitType=="targeting"){
             hitList<-NULL
             if(supportType=="strong"){
-                load("outputs/mirt_targeting_strong_hash.robj")
+                load("outputs/hsa_mirt_targeting_strong_hash.robj")
             } else if (supportType=="all"){
-                load("outputs/mirt_targeting_functional_hash.robj")
+                load("outputs/hsa_mirt_targeting_functional_hash.robj")
             } else {
                 stop(cat("Support type",supportType,"is not supported!"))
             }
@@ -102,7 +102,7 @@ hitsPerPathway<-function(query,queryType="entrez",hitType="direct",supportType="
         } else if (hitType=="targeting"){
             stop("Finding entrez query ids that target other pathway elements is not supported yet.")
         } else if (hitType=="direct"){
-            load("outputs/direct_entrez_wp_hash.robj")
+            load("outputs/hsa_direct_entrez_wp_hash.robj")
             hitList<-lookupListInHash(query,entrez_wp_hash,returnType)
             message(cat("Aggregate",returnType,"of query ids represented per pathway:"))
             return(hitList)
@@ -123,3 +123,50 @@ hitsPerPathway<-function(query,queryType="entrez",hitType="direct",supportType="
 # hitsPerPathway(query1, returnType="count")
 # hitsPerPathway(query2,"mirtarbase","targeting")
 # hitsPerPathway(query2,"mirtarbase","targets","strong","count")
+
+## WRITE RESULTING COUNTS TO CSV
+library(plyr) 
+counts_to_csv <- function(listfordf){
+    
+    df <- list(list.element = listfordf)
+    class(df) <- c("tbl_df", "data.frame")
+    attr(df, "row.names") <- .set_row_names(length(listfordf))
+    
+    if (!is.null(names(listfordf))) {
+        df$name <- names(listfordf)
+    }
+    write.csv(df, file = "~/Desktop/exercise_v2_up_targeting_cnts.csv")
+}
+
+
+## WRITE RESULTING LISTS TO CSV
+
+list_to_csv <- function(l1){
+    h1=hash(l1)
+    wpid<-keys(h1)
+    hits<-paste(values(h1),sep=",")
+    #remove list syntax cruft
+    hits=lapply(hits,function(y) gsub('[c|(|)|\\"]','',y))
+    c<-cbind(wpid,hits)
+    d<-as.data.frame(c)
+    e <- data.frame(lapply(d, as.character), stringsAsFactors=FALSE)
+    write.csv(e, file="~/Desktop/exercise_v2_up_targeting_list.csv",row.names=FALSE)
+}
+
+# ## WRITE PATHWAY ANNOT FOR LIST NAMES
+
+wp_annot_to_csv <- function(l1){
+    load("outputs/hsa_wp_annot_hash.robj")
+    l=names(l1)
+    h=wp_annot_hash
+    hit_vector<-unlist(lapply(l,function(y) !is.null(h[[y]])))
+    hit_list<-l[hit_vector]
+    hash_hits<-h[hit_list]
+    m1=values(hash_hits)
+    write.csv(t(m1), file="~/Desktop/exercise_v2_up_wp_list.csv",row.names=TRUE)
+}
+
+
+
+
+

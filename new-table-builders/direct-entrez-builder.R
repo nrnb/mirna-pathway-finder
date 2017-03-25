@@ -15,6 +15,11 @@ library(hash)
 # gmt file
 fname<-"inputs/wikipathways-20170210-gmt-Homo_sapiens.gmt"
 
+##########
+## OUTPUTS
+
+outcsv<-"outputs/hsa_direct_entrez_wp_hash.csv"
+outrobj<-"outputs/hsa_direct_entrez_wp_hash.robj"
 
 ############
 ## FUNCTIONS
@@ -45,7 +50,7 @@ exportHash2Csv <- function(h1){
     c<-cbind(entrez,wpids)
     d<-as.data.frame(c)
     e <- data.frame(lapply(d, as.character), stringsAsFactors=FALSE)
-    write.csv(e, file ="direct_entrez_wp_hash.csv",row.names=FALSE)
+    write.csv(e, file =outcsv,row.names=FALSE)
 }
 
 ######
@@ -56,4 +61,4 @@ wp_entrez_list<-processGMT(fname)
 entrez_wp_hash<-buildInvertedHash(wp_entrez_list)
 
 exportHash2Csv(entrez_wp_hash)
-save(entrez_wp_hash, file="direct_entrez_wp_hash.robj")
+save(entrez_wp_hash, file=outrobj)

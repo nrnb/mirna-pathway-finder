@@ -16,21 +16,21 @@ library(shiny)
 ## INPUTS
 
 # entrez_wp hash
-load("outputs/direct_entrez_wp_hash.robj")
+load("outputs/hsa_direct_entrez_wp_hash.robj")
 
 # mirt_targets hashes
-targets_functional<-"outputs/mirt_targets_functional_hash.robj"
-targets_strong<-"outputs/mirt_targets_strong_hash.robj"
+targets_functional<-"outputs/hsa_mirt_targets_functional_hash.robj"
+targets_strong<-"outputs/hsa_mirt_targets_strong_hash.robj"
 
 ##########
 ## OUTPUTS
 
 outcsv<-NULL
-outcsv_strong<-"outputs/mirt_targeting_strong_hash.csv"
-outcsv_functional<-"outputs/mirt_targeting_functional_hash.csv"
+outcsv_strong<-"outputs/hsa_mirt_targeting_strong_hash.csv"
+outcsv_functional<-"outputs/hsa_mirt_targeting_functional_hash.csv"
 outrobj<-NULL
-outrobj_strong<-"outputs/mirt_targeting_strong_hash.robj"
-outrobj_functional<-"outputs/mirt_targeting_functional_hash.robj"
+outrobj_strong<-"outputs/hsa_mirt_targeting_strong_hash.robj"
+outrobj_functional<-"outputs/hsa_mirt_targeting_functional_hash.robj"
 
 ############
 ## FUNCTIONS
