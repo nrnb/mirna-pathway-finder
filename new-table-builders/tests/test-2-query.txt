@@ -1,0 +1,11 @@
+# test 2 query
+# mirtarbase, mouse
+
+
+# QUERY PARAMETERS
+
+species=mouse
+
+database=mirtarbase
+
+identifiers=mmu-miR-34b-5p,mmu-miR-34c-5p

@@ -135,7 +135,7 @@ counts_to_csv <- function(listfordf){
     if (!is.null(names(listfordf))) {
         df$name <- names(listfordf)
     }
-    write.csv(df, file = "~/Desktop/exercise_v2_up_targeting_cnts.csv")
+    write.csv(df, file = "~/Desktop/counts.csv")
 }
 
 
@@ -150,7 +150,7 @@ list_to_csv <- function(l1){
     c<-cbind(wpid,hits)
     d<-as.data.frame(c)
     e <- data.frame(lapply(d, as.character), stringsAsFactors=FALSE)
-    write.csv(e, file="~/Desktop/exercise_v2_up_targeting_list.csv",row.names=FALSE)
+    write.csv(e, file="~/Desktop/list.csv",row.names=FALSE)
 }
 
 # ## WRITE PATHWAY ANNOT FOR LIST NAMES
@@ -163,7 +163,7 @@ wp_annot_to_csv <- function(l1){
     hit_list<-l[hit_vector]
     hash_hits<-h[hit_list]
     m1=values(hash_hits)
-    write.csv(t(m1), file="~/Desktop/exercise_v2_up_wp_list.csv",row.names=TRUE)
+    write.csv(t(m1), file="~/Desktop/wpannot.csv",row.names=TRUE)
 }
 
 

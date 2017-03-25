@@ -1,0 +1,11 @@
+# test 4 query
+# entrez, mouse
+
+
+# QUERY PARAMETERS
+
+species=mouse
+
+database=entrez
+
+identifiers=100043507,100503710,109689

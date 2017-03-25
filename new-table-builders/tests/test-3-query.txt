@@ -1,0 +1,11 @@
+# test 3 query
+# entrez, human
+
+
+# QUERY PARAMETERS
+
+species=human
+
+database=entrez
+
+identifiers=5294,6885,5728

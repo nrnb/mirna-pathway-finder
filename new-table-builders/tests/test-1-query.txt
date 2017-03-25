@@ -1,0 +1,11 @@
+# test 1 query
+# mirtarbase, human
+
+
+# QUERY PARAMETERS
+
+species=human
+
+database=mirtarbase
+
+identifiers=hsa-miR-10a-5p,hsa-miR-10b-3p
