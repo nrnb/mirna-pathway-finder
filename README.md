@@ -22,7 +22,7 @@ The list is displayed as a table that looks like this:
 ## To install
 
 ```
-git clone git@github.com:ariutta/mirna-pathway-finder.git
+git clone git@github.com:nrnb/mirna-pathway-finder.git
 cd mirna-pathway-finder
 ```
 
